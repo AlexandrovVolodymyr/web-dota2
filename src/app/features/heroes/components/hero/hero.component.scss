@@ -1,0 +1,63 @@
+@import 'src/assets/styles/variables';
+
+.hero {
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  margin: 1rem;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.4);
+
+    .hero__name {
+      bottom: 10px;
+      opacity: 1;
+    }
+
+    .hero__image img {
+      border: 3px solid yellow;
+    }
+  }
+
+  &__image {
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+      border-radius: 10px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      display: block;
+      width: 85px;
+      height: 115px;
+      object-fit: cover;
+      transition: border 0.3s ease-in-out;
+    }
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 5px;
+    text-align: left;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+
+    img {
+      margin-right: 10px;
+    }
+
+    span {
+      color: $white;
+      font-family: $font;
+      font-size: 14px;
+      line-height: 14px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}

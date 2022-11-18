@@ -1,0 +1,10 @@
+@import 'src/assets/styles/variables';
+
+button {
+  border-radius: 1px;
+  font-family: $font;
+  margin-right: 1rem;
+  @media screen and (max-width: 465px) {
+    margin-right: 10px;
+  }
+}

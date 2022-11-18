@@ -1,0 +1,144 @@
+@import "src/assets/styles/variables";
+
+.form {
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(4px);
+  border-radius: 1px;
+  min-width: 550px;
+  margin: 0 auto;
+  padding: 20px 20px 30px;
+  @media screen and (max-width: 578px) {
+    min-width: auto;
+  }
+
+  &__close {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    color: $white;
+    display: flex;
+    align-items: center;
+    font-family: $font;
+    font-size: 22px;
+    margin-bottom: 30px;
+    text-shadow: $text-shadow;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      transform: translateY(2.5px);
+    }
+
+    span {
+      line-height: 1;
+      margin-left: 10px;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+
+    &--invalid {
+      box-shadow: $box-shadow-invalid;
+    }
+  }
+
+  &__control {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: $white;
+    font-family: $font;
+    font-size: 16px;
+    flex-grow: 1;
+    height: 40px;
+    padding: 0 1rem;
+
+    &--file {
+      opacity: 0;
+      cursor: pointer;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    &--area {
+      padding: 1rem;
+    }
+
+    &:focus {
+      & ~ .form__border {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &__placeholder {
+    color: #757575;
+    font-size: 14px;
+    font-family: $font;
+    left: 1rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__border {
+    background-color: $logo-color;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+
+    &--active {
+      transform: translateX(0);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  &__switcher {
+    color: $text-color-light;
+    font-family: $font;
+    margin-left: auto;
+    padding-right: 5px;
+    @media screen and (max-width: 465px) {
+      span {
+        display: none;
+      }
+    }
+
+
+    a {
+      color: $white;
+      margin-left: 5px;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        color: $logo-color;
+      }
+
+      &:active {
+        color: $logo-color;
+      }
+    }
+  }
+}

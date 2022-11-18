@@ -1,0 +1,8 @@
+<div class="app" [ngStyle]="{ 'background-image': !!backgroundImage ? 'url(' + backgroundImage + ')' : 'unset' }">
+  <app-header *ngIf="user$ | async as user" [user]="user"></app-header>
+
+<!--  <main [@routerTransition]="getState(outlet)">-->
+<!--    <router-outlet #outlet="outlet"></router-outlet>-->
+<!--  </main>-->
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,213 @@
+@import 'src/assets/styles/variables';
+
+:host {
+  background: linear-gradient(80deg, #252728 0%, #101415 100%);
+  box-shadow: 0 0 8px $black;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -85px;
+  padding: 20px;
+
+  .attributes, .roles, .stats {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .attributes, .stats {
+    flex: 0 0 auto;
+  }
+
+  .roles {
+    flex-basis: 500px;
+  }
+
+  .attributes-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    height: 100%;
+
+    &__title {
+      color: $text-color-light;
+      font-size: 18px;
+      font-family: $font-secondary;
+      font-weight: 600;
+      letter-spacing: 2px;
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-top: auto;
+      text-align: center;
+      text-shadow: 1px 1px 2px #000;
+      text-transform: uppercase;
+    }
+  }
+
+  .hero-icon {
+    display: flex;
+    width: 150px;
+    height: 84px;
+
+    img {
+      width: 150px;
+      height: 84px;
+    }
+  }
+
+  .hero-health, .hero-mana {
+    width: 150px;
+    position: relative;
+    text-align: center;
+
+    .max {
+      color: $white;
+      font-size: 14px;
+      line-height: 16px;
+      font-family: $fontSemiBold;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .regen {
+      color: #1056db;
+      font-size: 12px;
+      line-height: 1;
+      font-family: $font;
+      position: absolute;
+      top: 3px;
+      right: 20px;
+    }
+  }
+
+  .hero-health {
+    background: linear-gradient(to right, #286323, #7AF03C);
+  }
+
+  .hero-mana {
+    background: linear-gradient(to right, #1056DB, #73F5FE);
+  }
+
+  .attribute {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 50px;
+
+    &__icon {
+      display: flex;
+      width: 30px;
+      height: 30px;
+      margin-right: 12px;
+
+      img {
+        max-width: 30px;
+      }
+    }
+
+    &__value {
+      color: $white;
+      font-size: 28px;
+      font-family: $fontBold;
+      line-height: 1;
+      text-shadow: 1px 1px 2px $black;
+      margin-top: 4px;
+    }
+
+    &__gain {
+      color: $text-color-light;
+      font-size: 15px;
+      font-family: $font;
+      line-height: 1;
+      text-shadow: 1px 1px 2px $black;
+      margin-left: 8px;
+      margin-top: 7px;
+    }
+
+    &:nth-child(2) {
+      margin: 10px 0;
+    }
+  }
+
+  .roles {
+    .roles-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      li {
+        padding: 5px 10px;
+      }
+    }
+
+    .role-name {
+      color: $white;
+      font-family: $font;
+      font-size: 15px;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .role-line {
+      background-color: #4c4c4c;
+      width: 128px;
+      height: 6px;
+
+      &--active {
+        background-color: $white;
+        box-shadow: 0 0 10px #427ed1, 0 0 10px #427ed1;
+      }
+    }
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+
+    .stats-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+
+      &__item {
+        flex: 0 0 32%;
+        max-width: 32%;
+      }
+    }
+
+    .stat-name {
+      color: $text-color-light;
+      font-family: $font-secondary;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-top: 20px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .attack-list, .defense-list, .mobility-list {
+      padding: 10px;
+
+      li {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+      }
+
+      &__icon {
+        margin-right: 10px;
+      }
+
+      &__value {
+        color: $white;
+        flex-shrink: 0;
+        font-size: 20px;
+        font-family: "Crimson Text Bold", sans-serif;
+        line-height: 1;
+        text-shadow: 1px 1px 2px $black;
+      }
+    }
+  }
+}

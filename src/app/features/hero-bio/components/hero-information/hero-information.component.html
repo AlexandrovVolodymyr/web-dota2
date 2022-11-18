@@ -1,0 +1,52 @@
+<div class="hero-information">
+  <div class="container">
+    <div class="hero-information__left">
+      <div class="wrapper">
+        <div class="hero-attribute" [ngSwitch]="hero.primary_attr">
+          <ng-container *ngSwitchCase="HeroAttributes.STRENGTH">
+            <img class="hero-attribute__icon" src="assets/img/attributes/hero_strength.png" alt="STRENGTH">
+            <div class="hero-attribute__name">Strength</div>
+          </ng-container>
+          <ng-container *ngSwitchCase="HeroAttributes.AGILITY">
+            <img class="hero-attribute__icon" src="assets/img/attributes/hero_agility.png" alt="AGILITY">
+            <div class="hero-attribute__name">Agility</div>
+          </ng-container>
+          <ng-container *ngSwitchCase="HeroAttributes.INTELLIGENCE">
+            <img class="hero-attribute__icon" src="assets/img/attributes/hero_intelligence.png" alt="INTELLIGENCE">
+            <div class="hero-attribute__name">Intelligence</div>
+          </ng-container>
+        </div>
+        <div class="hero-name">{{ hero.name_loc }}</div>
+        <div style="position: relative">
+          <div class="hero-excerpt" [innerHTML]="hero.npe_desc_loc"></div>
+          <div class="wrapper-description" [class.wrapper-description--hide]="isFullHistory">
+            <div class="hero-description" [innerHTML]="hero.hype_loc"></div>
+            <button mat-stroked-button class="hero-history-toggle" (click)="showFullHistory()">Show full history</button>
+          </div>
+          <div class="hero-full-description" *ngIf="isFullHistory">
+            <div>{{ hero.bio_loc }}</div>
+            <button mat-stroked-button class="hero-history-toggle" (click)="closeFullHistory()">Close</button>
+          </div>
+        </div>
+
+        <div class="hero-abilities-container">
+          <div class="hero-abilities">
+            <div class="hero-abilities__title">Abilities</div>
+            <app-hero-abilities [abilities]="hero.abilities" (showEvent)="showAbility()"></app-hero-abilities>
+          </div>
+
+          <div class="hero-talents">
+            <app-talent-tree></app-talent-tree>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-information__right">
+      <div class="wrapper">
+        <div class="hero-video">
+          <video [autoplay]="true" [loop]="true" [muted]="true" [src]="hero.video"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

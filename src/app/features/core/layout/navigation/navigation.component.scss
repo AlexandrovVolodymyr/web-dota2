@@ -1,0 +1,41 @@
+@import 'src/assets/styles/variables';
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+
+  .logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .navigation {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding-left: 0;
+
+    li {
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      font-family: $font-secondary;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 39px;
+      margin-left: 40px;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        color: $white;
+        text-shadow: $text-shadow;
+      }
+
+      &.active {
+        color: $white;
+        text-shadow: $text-shadow;
+      }
+    }
+  }
+}

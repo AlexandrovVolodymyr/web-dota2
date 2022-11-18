@@ -1,0 +1,29 @@
+<div class="steam-form">
+  <div class="steam-form__header">Steam Login</div>
+  <span class="steam-form__logo">
+    <img src="assets/img/steam-icon-logo.svg" alt="Steam">
+    <span class="steam-form__logo-text">steam</span>
+  </span>
+
+  <form class="steam-login-form" [formGroup]="steamForm">
+    <div class="steam-login-form__row">
+      <label>
+        <span class="steam-login-form__name">Account name</span>
+        <input class="steam-login-form__control" type="text" formControlName="name">
+      </label>
+      <label>
+        <span class="steam-login-form__name">Password</span>
+        <input class="steam-login-form__control" type="text" formControlName="password">
+      </label>
+    </div>
+
+    <div class="steam-login-form__actions">
+      <button type="button" (click)="submit()" [disabled]="steamForm.invalid">
+        <span>login</span>
+      </button>
+      <button type="button" (click)="reset()">
+        <span>reset</span>
+      </button>
+    </div>
+  </form>
+</div>

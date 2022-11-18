@@ -1,0 +1,21 @@
+<div class="user">
+  <div class="user-data">
+    <div class="user-data__avatar">
+      <img [src]="user?.photo" [alt]="user?.displayName">
+    </div>
+    <div class="user-data-personal">
+      <div class="user-data__name">{{ user?.displayName }}</div>
+      <div class="user-data__status"><span></span>Online</div>
+    </div>
+    <div class="user-data__settings" (click)="openProfile()">
+      <button mat-mini-fab color="primary" aria-label="Previous hero">
+        <mat-icon>settings</mat-icon>
+      </button>
+    </div>
+    <div class="user-data__logout" (click)="logout()">
+      <button mat-mini-fab color="primary" aria-label="Previous hero">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+@import 'src/assets/styles/variables';
+
+.attribute {
+  display: flex;
+  align-items: center;
+
+  &__title {
+    color: $text-color-light;
+    font-size: 18px;
+    font-family: $font-secondary;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__values {
+    img {
+      cursor: pointer;
+      filter: grayscale(100%);
+      margin-left: 10px;
+
+      &.active {
+        filter: unset;
+      }
+    }
+  }
+}

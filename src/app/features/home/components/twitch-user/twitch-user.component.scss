@@ -1,0 +1,138 @@
+@import 'src/assets/styles/variables';
+
+.twitch-user {
+  background-color: #18181b;
+  border: 1px solid $twitch-control;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    padding-top: 1rem;
+  }
+
+  &__avatar {
+    background-color: $black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 300px;
+    max-width: 300px;
+    height: 300px;
+    position: relative;
+    @media screen and (max-width: 767px) {
+      border-radius: 50%;
+      margin: 0 auto;
+    }
+    @media screen and (max-width: 550px) {
+      flex: 0 0 150px;
+      height: 150px;
+      max-width: 150px;
+    }
+
+    img {
+      max-width: 100%;
+      @media screen and (max-width: 767px) {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__type {
+    background-color: darkgreen;
+    border-radius: 4px;
+    color: $white;
+    font-size: 12px;
+    font-family: $font-secondary;
+    font-weight: 500;
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    padding: 2px 5px;
+    text-transform: lowercase;
+  }
+
+  &-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    @media screen and (max-width: 767px) {
+      padding: 1rem;
+    }
+  }
+
+  &__name, &__description {
+    color: $white;
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+    height: calc(100% / 3);
+    @media screen and (max-width: 767px) {
+      padding-bottom: 1rem;
+    }
+    @media screen and (max-width: 550px) {
+      flex-wrap: wrap;
+    }
+
+    .text {
+      flex-basis: 130px;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 3px;
+      @media screen and (max-width: 550px) {
+        flex-basis: 100%;
+        margin-bottom: 10px;
+      }
+    }
+
+    .control {
+      background-color: $twitch-control;
+      border: 2px solid $twitch-control;
+      border-radius: 4px;
+      color: $white;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      flex-grow: 1;
+      min-height: 30px;
+      padding: 5px 10px;
+      transition: border 100ms ease-in, background-color 100ms ease-in;
+
+      &:focus {
+        background-color: $black;
+        border-color: $twitch-color;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+      }
+
+      &--area {
+        min-height: 75px;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+
+    button {
+      background-color: $twitch-color;
+      border-radius: 4px;
+      color: $white;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      height: 30px;
+      width: 150px;
+      padding: 0 10px;
+      transition: background-color 0.3s ease-in-out;
+
+      &:hover {
+        background-color: $twitch-color-dark;
+      }
+    }
+  }
+}

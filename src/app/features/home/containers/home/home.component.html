@@ -1,0 +1,16 @@
+<div class="home">
+  <div class="home-preview">
+    <video [autoplay]="true" [loop]="true" [muted]="true" [src]="'assets/img/videos/dota_montage.webm'"></video>
+  </div>
+  <div class="container">
+    <h2 class="twitch-title">Twitch Integration</h2>
+    <ng-container *ngIf="twitchUser$ | async as twitchUser; else twitchAuthTpl">
+      <app-twitch-user [twitchUser]="twitchUser" (updateEvent)="updateUser($event)"></app-twitch-user>
+      <h3 class="twitch-title">Twitch Top Games</h3>
+      <app-twitch-top-games [topGames]="twitchTopGames$ | async" (openGameEvent)="openGame($event)"></app-twitch-top-games>
+    </ng-container>
+    <ng-template #twitchAuthTpl>
+      <app-twitch-auth (submitEvent)="loginToTwitch($event)"></app-twitch-auth>
+    </ng-template>
+  </div>
+</div>

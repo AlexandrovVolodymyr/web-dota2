@@ -1,0 +1,33 @@
+@import 'src/assets/styles/variables';
+
+:host {
+  width: 100%;
+
+  .loaded-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      @media screen and (max-width: 578px) {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    &__clear {
+      color: $white;
+      cursor: pointer;
+      font-family: $font;
+      margin-top: 10px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

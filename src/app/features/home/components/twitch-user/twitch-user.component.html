@@ -1,0 +1,23 @@
+<form class="twitch-user" [formGroup]="twitchUserForm">
+  <div class="twitch-user__avatar">
+    <img [src]="twitchUser?.profile_image_url" [alt]="twitchUser?.display_name">
+    <div class="twitch-user__type" *ngIf="twitchUser?.broadcaster_type">{{ twitchUser?.broadcaster_type }}</div>
+  </div>
+  <div class="twitch-user-info">
+    <div class="twitch-user__name">
+      <span class="text">User Name:</span>
+      <input type="text" class="control" formControlName="login">
+    </div>
+    <div class="twitch-user__name">
+      <span class="text">Display Name:</span>
+      <input type="text" class="control" formControlName="display_name">
+    </div>
+    <div class="twitch-user__description">
+      <span class="text">Description:</span>
+      <textarea class="control control--area" formControlName="description"></textarea>
+    </div>
+    <div class="twitch-user__actions">
+      <button (click)="update()">Update</button>
+    </div>
+  </div>
+</form>

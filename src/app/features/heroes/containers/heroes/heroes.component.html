@@ -1,0 +1,19 @@
+<div class="heroes">
+  <h2 class="heroes__title">
+    <span class="heroes__title--big">Choose your hero</span>
+    <span class="heroes__title--normal">
+      From magical tacticians to fierce brutes and cunning rogues, Dota 2's hero pool is massive and limitlessly diverse.
+      Unleash incredible abilities and devastating ultimates on your way to victory.
+    </span>
+  </h2>
+
+  <app-heroes-filters (attributeEvent)="setAttributes($event)"
+                     (searchEvent)="onSearch($event)">
+  </app-heroes-filters>
+
+  <ul *ngIf="filteringHeroes$ | async as heroes" class="animate__animated animate__fadeIn heroes-list">
+    <li *ngFor="let hero of heroes" (click)="openHero(hero)">
+      <app-hero [hero]="hero"></app-hero>
+    </li>
+  </ul>
+</div>

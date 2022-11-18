@@ -1,0 +1,25 @@
+@import 'src/assets/styles/variables';
+
+.abilities {
+  margin-left: -10px;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    padding: 10px;
+
+    .ability-icon {
+      display: flex;
+      width: 80px;
+      height: 80px;
+      box-shadow: 0 0 20px #000, 0 0 20px #000;
+
+      img {
+        border-radius: 1px;
+        cursor: pointer;
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+}

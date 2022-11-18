@@ -1,0 +1,25 @@
+<form class="contacts-form form" [formGroup]="contactsForm">
+  <app-form-header [title]="'Get In Touch'" [isCloseIcon]="false"></app-form-header>
+
+  <div class="form__row" [class.form__row--invalid]="firstName.invalid && firstName.touched">
+    <input type="text" class="form__control" placeholder="First Name" formControlName="firstName">
+    <span class="form__border"></span>
+  </div>
+  <div class="form__row" [class.form__row--invalid]="lastName.invalid && lastName.touched">
+    <input type="text" class="form__control" placeholder="Last Name" formControlName="lastName">
+    <span class="form__border"></span>
+  </div>
+  <div class="form__row" [class.form__row--invalid]="email.invalid && email.touched">
+    <input type="text" class="form__control" placeholder="Email" formControlName="email">
+    <span class="form__border"></span>
+  </div>
+  <div class="form__row" [class.form__row--invalid]="message.invalid && message.touched">
+    <textarea class="form__control form__control--area" placeholder="How can we help you?" formControlName="message"></textarea>
+    <span class="form__border"></span>
+  </div>
+
+  <app-form-actions [properties]="properties"
+                    (resetEvent)="reset()"
+                    (actionEvent)="send()">
+  </app-form-actions>
+</form>

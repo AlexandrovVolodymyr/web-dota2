@@ -1,0 +1,20 @@
+<div class="profile-overlay" *ngIf="user$ | async as user">
+  <div class="profile" @toggleBar>
+    <div class="profile__icon">
+      <mat-icon (click)="closeProfile()">close</mat-icon>
+    </div>
+    <div class="profile-info">
+      <div class="profile__avatar">
+        <div>
+          <img [src]="user.photo" [alt]="user.displayName">
+        </div>
+        <span class="profile-action">Change avatar</span>
+      </div>
+      <div class="profile__name">
+<!--        <input type="text">-->
+        <span>{{ user.displayName }}</span>
+        <mat-icon>edit</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

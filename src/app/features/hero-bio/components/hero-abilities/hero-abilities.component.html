@@ -1,0 +1,13 @@
+<ul class="abilities">
+  <li *ngFor="let ability of abilities">
+    <div>
+      <div class="ability-icon" (click)="show()">
+        <img [src]="ability.icon" [alt]="ability.name_loc">
+      </div>
+<!--      <div class="ability-name" style="color: white">{{ ability.name_loc }}</div>-->
+<!--      -->
+<!--      <div class="ability-description">{{ ability.desc_loc }}</div>-->
+<!--      <div class="ability-description">{{ ability.lore_loc }}</div>-->
+    </div>
+  </li>
+</ul>

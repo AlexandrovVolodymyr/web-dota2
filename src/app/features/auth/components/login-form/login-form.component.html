@@ -1,0 +1,21 @@
+<div class="form login-form">
+  <app-form-header [title]="'Sign In'" (closeEvent)="close()"></app-form-header>
+
+  <form [formGroup]="loginForm">
+    <div class="form__row login-form__row">
+      <input type="text" class="form__control login-form__control" placeholder="Login" formControlName="email">
+      <span class="form__border login-form__border" [class.form__border--active]="email.value"></span>
+    </div>
+    <div class="form__row login-form__row">
+      <input type="password" class="form__control login-form__control" placeholder="Password" formControlName="password">
+      <span class="form__border login-form__border" [class.form__border--active]="password.value"></span>
+    </div>
+
+    <app-form-actions [properties]="properties"
+                      [disabled]="loginForm.invalid"
+                      (actionEvent)="login()"
+                      (resetEvent)="reset()"
+                      (switchEvent)="switchForm()">
+    </app-form-actions>
+  </form>
+</div>

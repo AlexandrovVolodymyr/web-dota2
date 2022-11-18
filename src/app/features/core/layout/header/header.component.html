@@ -1,0 +1,10 @@
+<header>
+  <app-navigation></app-navigation>
+
+  <app-user [user]="user"
+            (logoutEvent)="logout()"
+            (openProfileEvent)="openProfileBar()">
+  </app-user>
+</header>
+
+<ng-template #profileContainer></ng-template>

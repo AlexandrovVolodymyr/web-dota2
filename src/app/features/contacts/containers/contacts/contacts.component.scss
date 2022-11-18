@@ -1,0 +1,9 @@
+@import 'src/assets/styles/variables';
+
+.contacts {
+  .container {
+    max-width: $container;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+}

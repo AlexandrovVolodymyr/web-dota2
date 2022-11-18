@@ -1,0 +1,19 @@
+@import 'src/assets/styles/variables';
+
+.hero-slider {
+  position: absolute;
+  left: calc(88px + 2rem);
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  z-index: 2;
+
+  &__left, &__right {
+    cursor: pointer;
+
+    button {
+      background-color: transparent;
+    }
+  }
+}

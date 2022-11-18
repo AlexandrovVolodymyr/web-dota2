@@ -1,0 +1,22 @@
+<form class="twitch-form" [formGroup]="twitchForm">
+  <div class="twitch-form__logo">
+    <svg width="64" height="75" viewBox="0 0 64 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M58.6667 34.5928L48 45.2367H37.3333L28 54.5501V45.2367H16V5.32196H58.6667V34.5928Z" fill="white"/><path d="M13.3333 0L0 13.3049V61.2026H16V74.5075L29.3333 61.2026H40L64 37.2537V0H13.3333ZM58.6667 34.5928L48 45.2367H37.3333L28 54.5501V45.2367H16V5.32196H58.6667V34.5928Z" fill="black"/><path d="M50.6667 14.6354H45.3333V30.6013H50.6667V14.6354Z" fill="black"/><path d="M36 14.6354H30.6667V30.6013H36V14.6354Z" fill="black"/></svg>
+  </div>
+  <h2 class="twitch-form__title">
+    Welcome 🎉
+  </h2>
+  <label class="twitch-form__row">
+    <span class="twitch-form__name">Client Id</span>
+    <input type="text" class="twitch-base twitch-form__control" placeholder="Client Id" formControlName="clientId"
+           [class.twitch-form__control--error]="clientId.invalid && clientId.touched">
+  </label>
+  <label class="twitch-form__row">
+    <span class="twitch-form__name">Secret Id</span>
+    <input #password type="password" class="twitch-base twitch-form__control" placeholder="Secret Id" formControlName="secretId"
+           [class.twitch-form__control--error]="secretId.invalid && secretId.touched">
+    <mat-icon (click)="toggleType(password)">{{ password.type === 'password' ? 'visibility_off' : 'visibility' }}</mat-icon>
+  </label>
+
+  <button type="button" class="twitch-base twitch-btn" matRipple="matRipple" (click)="submit()">Submit</button>
+  <button type="button" class="twitch-base twitch-btn" matRipple="matRipple" (click)="reset()">Reset</button>
+</form>

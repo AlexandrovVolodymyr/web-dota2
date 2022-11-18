@@ -1,0 +1,12 @@
+<div class="form__actions">
+  <app-button [text]="properties.resetBtnText"
+              (clickEvent)="resetHandler()">
+  </app-button>
+  <app-button [text]="properties.actionBtnText"
+              [color]="properties.color"
+              [disabled]="disabled"
+              (clickEvent)="actionHandler()">
+  </app-button>
+
+  <div class="form__switcher" *ngIf="switcher"><span>{{ properties.switcherText }}</span><a href="#" (click)="switch($event)">{{ properties.switcherLink }}</a></div>
+</div>

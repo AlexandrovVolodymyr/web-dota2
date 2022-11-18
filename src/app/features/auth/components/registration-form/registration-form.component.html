@@ -1,0 +1,38 @@
+<div class="form registration-form">
+  <app-form-header [title]="'Sign Up'" (closeEvent)="close()"></app-form-header>
+
+  <form [formGroup]="registrationForm">
+    <div class="form__row registration-form__row">
+      <input type="text" class="form__control registration-form__control" placeholder="Display Name" formControlName="displayName">
+      <span class="form__border registration-form__border" [class.form__border--active]="displayName.value"></span>
+    </div>
+    <div class="form__row registration-form__row">
+      <input type="text" class="form__control registration-form__control" placeholder="Email" formControlName="email">
+      <span class="form__border registration-form__border" [class.form__border--active]="email.value"></span>
+    </div>
+    <div class="form__row registration-form__row">
+      <input type="password" class="form__control registration-form__control" placeholder="Password" formControlName="password">
+      <span class="form__border registration-form__border" [class.form__border--active]="password.value"></span>
+    </div>
+    <div class="form__row registration-form__row" *ngIf="!avatar">
+      <div class="form__control"></div>
+      <span class="form__placeholder">Photo</span>
+      <input type="file" class="form__control form__control--file registration-form__control" placeholder="Photo"
+             formControlName="photo"
+             (change)="onChange($event)">
+      <span class="form__border registration-form__border" [class.form__border--active]="photo.value"></span>
+    </div>
+
+    <div class="loaded-avatar" *ngIf="avatar">
+      <img [src]="avatar" alt="avatar">
+      <span class="loaded-avatar__clear" (click)="resetAvatar()">Clear</span>
+    </div>
+
+    <app-form-actions [properties]="properties"
+                      [disabled]="registrationForm.invalid"
+                      (actionEvent)="registration()"
+                      (resetEvent)="reset()"
+                      (switchEvent)="switchForm()">
+    </app-form-actions>
+  </form>
+</div>

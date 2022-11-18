@@ -1,0 +1,10 @@
+:host {
+  overflow: auto;
+
+  .hero-page {
+    &-container {
+      padding: 1rem 2rem;
+      position: relative;
+    }
+  }
+}

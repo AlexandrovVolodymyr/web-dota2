@@ -1,0 +1,79 @@
+@import 'src/assets/styles/variables';
+
+.twitch-form {
+  background-color: $twitch-color;
+  border-radius: 30px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  max-width: 550px;
+  margin: auto;
+  padding: 24px;
+
+  .twitch-base {
+    background: $white;
+    border-radius: 8px;
+    box-shadow: $twitch-shadow;
+    color: $twitch-color;
+    font-size: 16px;
+
+    &::placeholder {
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+    }
+
+    &.twitch-form__control--error {
+      box-shadow: $box-shadow-invalid;
+    }
+  }
+
+  &__title {
+    color: $white;
+    font-weight: 700;
+    font-size: 31px;
+    line-height: 37px;
+    margin-top: 1rem;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    position: relative;
+
+    mat-icon {
+      color: $black;
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+
+      &:hover {
+        color: $twitch-color;
+      }
+    }
+  }
+
+  &__name {
+    color: $white;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 8px;
+  }
+
+  &__control {
+    border: none;
+    width: 100%;
+    height: 56px;
+    padding: 16px 40px 16px 16px;
+  }
+
+  .twitch-btn {
+    font-weight: 500;
+    margin-top: 20px;
+    height: 56px;
+    width: 100%;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $text-color-light;
+    }
+  }
+}

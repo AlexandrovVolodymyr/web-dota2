@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+@import "src/assets/styles/fonts";
+@import "src/assets/styles/variables";
+@import "src/assets/styles/form";
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html, body {
+  font-size: 14px;
+  font-family: $font;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  background-color: #000;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+input, textarea {
+  &::placeholder {
+    font-size: 14px;
+    font-family: $font;
+  }
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+mat-icon {
+  color: $white;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    color: $logo-color;
+  }
+}
+
+.snackbar {
+  background-color: $purple;
+  backdrop-filter: blur(4px);
+  color: $text-color-light;
+}

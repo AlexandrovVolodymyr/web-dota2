@@ -1,0 +1,64 @@
+@import 'src/assets/styles/variables';
+
+.user {
+  color: $white;
+  padding: 1rem;
+
+  .user-data {
+    display: flex;
+    align-items: center;
+
+    &__avatar {
+      background-color: $text-color-light;
+      border-radius: 50%;
+      border: 2px solid $text-color-light;
+      width: 80px;
+      height: 80px;
+      overflow: hidden;
+
+      img {
+        max-width: 100%;
+      }
+    }
+
+    &-personal {
+      padding: 10px;
+    }
+
+    &__name {
+      font-family: $font-secondary;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    &__status {
+      color: $green;
+      font-family: $font;
+      font-size: 14px;
+      line-height: 19px;
+      display: flex;
+      align-items: center;
+
+      span {
+        background-color: $green;
+        border-radius: 50%;
+        width: 8px;
+        height: 8px;
+        margin-right: 5px;
+      }
+    }
+
+    &__logout, &__settings {
+      border: 1px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      margin-left: 30px;
+
+      button {
+        background-color: transparent;
+      }
+    }
+  }
+}

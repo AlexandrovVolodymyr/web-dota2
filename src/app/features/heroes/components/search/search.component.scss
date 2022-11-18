@@ -1,0 +1,15 @@
+.search {
+  min-width: 300px;
+  padding: 0.5rem;
+
+  .form__row {
+    margin-bottom: 0;
+
+    input {
+      background-image: url('/assets/img/icons/search.svg');
+      background-repeat: no-repeat;
+      background-position: 10px 50%;
+      padding-left: 40px;
+    }
+  }
+}

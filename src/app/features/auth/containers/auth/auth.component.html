@@ -1,0 +1,14 @@
+<div class="auth" *ngIf="!(user$ | async)">
+  <app-login-form *ngIf="isShowLoginForm$ | async; else registrationForm"
+                  (loginEvent)="login($event)"
+                  (switchEvent)="isShowLoginForm$.next(false)"
+                  (closeLoginForm)="closeForm()">
+  </app-login-form>
+  <ng-template #registrationForm>
+    <app-registration-form (registrationEvent)="createUser($event)"
+                           (switchEvent)="isShowLoginForm$.next(true)"
+                           (closeRegistrationEvent)="closeForm()">
+    </app-registration-form>
+  </ng-template>
+<!--  <app-steam-form></app-steam-form>-->
+</div>

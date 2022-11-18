@@ -1,0 +1,102 @@
+<div class="attributes">
+  <div class="attributes-wrapper">
+    <div>
+      <div class="hero-icon">
+        <img [src]="hero.icon" [alt]="hero.name_loc">
+      </div>
+      <div class="hero-health">
+        <span class="max">{{ hero.max_health }}</span>
+        <span class="regen">+ {{ hero.health_regen | numberRound }}</span>
+      </div>
+      <div class="hero-mana">
+        <span class="max">{{ hero.max_mana }}</span>
+        <span class="regen">+ {{ hero.mana_regen | numberRound }}</span>
+      </div>
+    </div>
+    <div>
+      <div class="attribute strength">
+        <div class="attribute__icon">
+          <img src="assets/img/attributes/hero_strength.png" alt="hero_strength">
+        </div>
+        <div class="attribute__value">{{ hero.str_base }}</div>
+        <div class="attribute__gain">+ {{ hero.str_gain }}</div>
+      </div>
+      <div class="attribute agility">
+        <div class="attribute__icon">
+          <img src="assets/img/attributes/hero_agility.png" alt="hero_agility">
+        </div>
+        <div class="attribute__value">{{ hero.agi_base }}</div>
+        <div class="attribute__gain">+ {{ hero.agi_gain }}</div>
+      </div>
+      <div class="attribute intelligence">
+        <div class="attribute__icon">
+          <img src="assets/img/attributes/hero_intelligence.png" alt="hero_intelligence">
+        </div>
+        <div class="attribute__value">{{ hero.int_base }}</div>
+        <div class="attribute__gain">+ {{ hero.int_gain }}</div>
+      </div>
+    </div>
+    <div class="attributes-wrapper__title">Attributes</div>
+  </div>
+</div>
+<div class="roles">
+  <ul class="roles-list" *ngIf="roles$ | async as roles">
+    <li *ngFor="let role of roles">
+      <div class="role-name">{{ role }}</div>
+      <div class="role-line" [class.role-line--active]="hero.roles.includes(role)"></div>
+    </li>
+  </ul>
+  <div class="attributes-wrapper__title">Roles</div>
+</div>
+<div class="stats">
+  <ul class="stats-list">
+    <li class="stats-list__item">
+      <div class="stat-name">Attack</div>
+      <ul class="attack-list">
+        <li>
+          <img class="attack-list__icon" src="assets/img/attributes/icon_damage.png" alt="icon_damage">
+          <div class="attack-list__value">{{ hero.damage_min }}-{{ hero.damage_max }}</div>
+        </li>
+        <li>
+          <img class="attack-list__icon" src="assets/img/attributes/icon_attack_time.png" alt="icon_attack_time">
+          <div class="attack-list__value">{{ hero.attack_rate }}</div>
+        </li>
+        <li>
+          <img class="attack-list__icon" src="assets/img/attributes/icon_attack_range.png" alt="icon_attack_range">
+          <div class="attack-list__value">{{ hero.attack_range }}</div>
+        </li>
+      </ul>
+    </li>
+    <li class="stats-list__item">
+      <div class="stat-name">Defense</div>
+      <ul class="defense-list">
+        <li>
+          <img class="attack-list__icon" src="assets/img/attributes/icon_armor.png" alt="icon_armor">
+          <div class="defense-list__value">{{ hero.armor | numberRound }}</div>
+        </li>
+        <li>
+          <img class="attack-list__icon" src="assets/img/attributes/icon_magic_resist.png" alt="icon_magic_resist">
+          <div class="defense-list__value">{{ hero.magic_resistance }}</div>
+        </li>
+      </ul>
+    </li>
+    <li class="stats-list__item">
+      <div class="stat-name">Mobility</div>
+      <ul class="mobility-list">
+        <li>
+          <img class="attack-list__icon" src="assets/img/attributes/icon_movement_speed.png" alt="icon_movement_speed">
+          <div class="mobility-list__value">{{ hero.movement_speed }}</div>
+        </li>
+        <li>
+          <img class="attack-list__icon" src="assets/img/attributes/icon_turn_rate.png" alt="icon_turn_rate">
+          <div class="mobility-list__value">{{ hero.turn_rate }}</div>
+        </li>
+        <li>
+          <img class="attack-list__icon" src="assets/img/attributes/icon_attack_range.png" alt="icon_attack_range">
+          <div class="mobility-list__value">{{ hero.sight_range_day }}-{{ hero.sight_range_night }}</div>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="attributes-wrapper__title">Stats</div>
+</div>
