@@ -99,6 +99,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         next: (user: TwitchUser) => {
           this.twitchService.twitchUser$.next(user);
           localStorage.setItem('twitchUser', JSON.stringify(user));
+
+          this.matSnackBar.open('Twitch profile has been updated', 'Close', this.utilsService.snackBarOptions());
         },
         error: (err: HttpErrorResponse) => this.handleError(err)
       });

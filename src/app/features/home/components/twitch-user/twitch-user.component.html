@@ -17,7 +17,7 @@
       <textarea class="control control--area" formControlName="description"></textarea>
     </div>
     <div class="twitch-user__actions">
-      <button (click)="update()">Update</button>
+      <button (click)="update()" [disabled]="twitchUserForm.invalid">Update</button>
     </div>
   </div>
 </form>

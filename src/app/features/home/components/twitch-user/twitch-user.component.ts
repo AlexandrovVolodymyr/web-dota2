@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { NgForOf, NgIf } from "@angular/common";
 
 import { TwitchUser } from "../../../core/interfaces/twitch.interface";
@@ -22,7 +22,7 @@ export class TwitchUserComponent implements OnInit {
     this.twitchUserForm = new FormGroup({
       login: new FormControl({ value: this.twitchUser?.login, disabled: true }),
       display_name: new FormControl(this.twitchUser?.display_name),
-      description: new FormControl(this.twitchUser?.description)
+      description: new FormControl(this.twitchUser?.description, [Validators.maxLength(300)])
     });
   }
 

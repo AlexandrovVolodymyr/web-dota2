@@ -133,6 +133,11 @@
       &:hover {
         background-color: $twitch-color-dark;
       }
+
+      &:disabled {
+        cursor: not-allowed;
+        filter: grayscale(100%);
+      }
     }
   }
 }

@@ -49,7 +49,7 @@ export class HeaderComponent implements OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe({
         next: () => {
-          localStorage.removeItem('user');
+          localStorage.clear();
           this.userService.setUser(null);
           this.router.navigate(['/']);
         },
