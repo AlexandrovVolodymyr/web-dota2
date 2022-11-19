@@ -7,6 +7,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 
 import { BehaviorSubject, Observable, Subject, switchMap, takeUntil } from "rxjs";
 
+import { authImports } from "../../auth.imports";
 import { AuthService } from "../../services/auth.service";
 import { UserService } from "../../../../services/user.service";
 import { UtilsService } from "../../../../services/utils.service";
@@ -21,6 +22,8 @@ import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
+  standalone: true,
+  imports: authImports,
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('openClose', [

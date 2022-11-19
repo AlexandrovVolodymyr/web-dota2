@@ -8,6 +8,7 @@ import {
 import { AbstractControl, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
+import { registrationFormImports } from "../../auth.imports";
 import { FormActions } from "../../../core/interfaces/form-actions.interface";
 import { Registration, RegistrationForm } from "../../../core/interfaces/auth.interface";
 
@@ -15,6 +16,8 @@ import { Registration, RegistrationForm } from "../../../core/interfaces/auth.in
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.scss'],
+  standalone: true,
+  imports: registrationFormImports,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrationFormComponent {

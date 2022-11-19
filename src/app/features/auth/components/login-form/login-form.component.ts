@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from "@angular/forms";
 
+import { loginFormImports } from "../../auth.imports";
 import { Login, LoginForm } from "../../../core/interfaces/auth.interface";
 import { FormActions } from "../../../core/interfaces/form-actions.interface";
 
@@ -8,6 +9,8 @@ import { FormActions } from "../../../core/interfaces/form-actions.interface";
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
+  standalone: true,
+  imports: loginFormImports,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginFormComponent {

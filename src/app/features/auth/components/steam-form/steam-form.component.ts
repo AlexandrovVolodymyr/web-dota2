@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 
 interface LoginForm {
   name: FormControl<string>;
@@ -10,16 +10,15 @@ interface LoginForm {
   selector: 'app-steam-form',
   templateUrl: './steam-form.component.html',
   styleUrls: ['./steam-form.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SteamFormComponent implements OnInit {
+export class SteamFormComponent {
   steamForm: FormGroup<LoginForm> = new FormGroup<LoginForm>({
     name: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     password: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
   });
-
-  ngOnInit(): void {
-  }
 
   submit(): void {
   }
