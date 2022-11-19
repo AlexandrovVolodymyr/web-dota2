@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, ViewContainerRef } from '@angular/core';
-import { animate, state, style, transition, trigger } from "@angular/animations";
+import { ChangeDetectionStrategy, Component, Input, ViewContainerRef } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
-import { User } from "../../../core/interfaces/user.interface";
+import { User } from '../../../core/interfaces/user.interface';
 
 // void - not part of the dom: created -> DOM, DOM -> removed from the DOm
 // * (default) -
@@ -23,15 +23,11 @@ import { User } from "../../../core/interfaces/user.interface";
     ])
   ]
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
   @Input() profileContainer!: ViewContainerRef;
   @Input() user$!: Observable<User | null>;
 
   closeProfile(): void {
     this.profileContainer.clear();
   }
-
-  ngOnInit(): void {
-  }
-
 }

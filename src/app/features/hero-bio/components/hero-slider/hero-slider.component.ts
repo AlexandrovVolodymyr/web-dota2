@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatIconModule } from "@angular/material/icon";
-import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
-import { HeroFullInformation } from "../../../core/interfaces/hero-full-information";
+import { HeroFullInformation } from '../../../core/interfaces/hero-full-information';
 
 @Component({
   selector: 'app-hero-slider',

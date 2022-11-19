@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { twitchAuthImports } from "../../home.imports";
-import { TwitchCredentials, TwitchForm } from "../../../core/interfaces/twitch.interface";
-import { environment } from "../../../../../environments/environment";
+import { twitchAuthImports } from '../../home.imports';
+import { TwitchCredentials, TwitchForm } from '../../../core/interfaces/twitch.interface';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-twitch-auth',
@@ -17,7 +17,10 @@ export class TwitchAuthComponent {
   @Output() submitEvent = new EventEmitter<TwitchCredentials>();
 
   twitchForm: FormGroup = new FormGroup<TwitchForm>({
-    clientId: new FormControl(environment.twitchConfig.clientId, { nonNullable: true, validators: [Validators.required] }),
+    clientId: new FormControl(environment.twitchConfig.clientId, {
+      nonNullable: true,
+      validators: [Validators.required]
+    }),
     secretId: new FormControl(environment.twitchConfig.secretId, { nonNullable: true })
   });
 

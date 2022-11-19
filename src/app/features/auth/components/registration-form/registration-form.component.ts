@@ -5,12 +5,12 @@ import {
   EventEmitter,
   Output
 } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from "@angular/forms";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { registrationFormImports } from "../../auth.imports";
-import { FormActions } from "../../../core/interfaces/form-actions.interface";
-import { Registration, RegistrationForm } from "../../../core/interfaces/auth.interface";
+import { registrationFormImports } from '../../auth.imports';
+import { FormActions } from '../../../core/interfaces/form-actions.interface';
+import { Registration, RegistrationForm } from '../../../core/interfaces/auth.interface';
 
 @Component({
   selector: 'app-registration-form',
@@ -86,10 +86,10 @@ export class RegistrationFormComponent {
     reader.onload = (event: ProgressEvent<FileReader>) => {
       this.avatar = 'data:image/jpg;base64, ' + btoa(event!.target!.result!.toString());
       this.cdr.detectChanges();
-    }
+    };
     reader.onerror = (error: ProgressEvent<FileReader>) => {
       this.matSnackBar.open(error.toString());
-    }
+    };
   }
 
   resetAvatar(): void {

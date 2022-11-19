@@ -1,10 +1,10 @@
 <div class="attribute">
   <div class="attribute__title">Attribute</div>
   <div class="attribute__values">
-    <img *ngFor="let attribute of attributes"
-         [src]="'assets/img/attributes/' + attribute.name"
+    <img (click)="setAttribute(attribute)"
+         *ngFor="let attribute of attributes"
          [alt]="attribute.type"
          [class.active]="attribute.status"
-         (click)="setAttribute(attribute)">
+         [src]="'assets/img/attributes/' + attribute.name">
   </div>
 </div>

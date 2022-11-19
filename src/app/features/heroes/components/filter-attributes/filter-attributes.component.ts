@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
-import { NgForOf } from "@angular/common";
+import { NgForOf } from '@angular/common';
 
-import { HeroAttributes } from "../../../core/interfaces/hero.interface";
-import { Attributes } from "../../../core/enums/attributes";
+import { HeroAttributes } from '../../../core/interfaces/hero.interface';
+import { Attributes } from '../../../core/enums/attributes';
 
 @Component({
   selector: 'app-filter-attributes',

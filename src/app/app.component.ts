@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from "@angular/router";
-import { animate, group, query, style, transition, trigger } from "@angular/animations";
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { animate, group, query, style, transition, trigger } from '@angular/animations';
 
-import { Observable, Subject, takeUntil } from "rxjs";
+import { Observable, Subject, takeUntil } from 'rxjs';
 
-import { UserService } from "./services/user.service";
-import { User } from "./features/core/interfaces/user.interface";
+import { UserService } from './services/user.service';
+import { User } from './features/core/interfaces/user.interface';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,7 @@ import { User } from "./features/core/interfaces/user.interface";
   animations: [
     trigger('routerTransition', [
       transition('* <=> *', [
-        query(':enter, :leave', style({ position: 'fixed', width:'100%' })),
+        query(':enter, :leave', style({ position: 'fixed', width: '100%' })),
         group([
           query(':enter', [
             style({ transform: 'translateX(100%)' }),

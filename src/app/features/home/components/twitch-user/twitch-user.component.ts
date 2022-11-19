@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { twitchUserImports } from "../../home.imports";
-import { TwitchUser } from "../../../core/interfaces/twitch.interface";
+import { twitchUserImports } from '../../home.imports';
+import { TwitchUser } from '../../../core/interfaces/twitch.interface';
 
 @Component({
   selector: 'app-twitch-user',

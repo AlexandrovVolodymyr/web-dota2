@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgForOf } from "@angular/common";
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-hero-abilities',

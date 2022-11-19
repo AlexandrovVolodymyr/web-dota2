@@ -1,19 +1,19 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { HttpErrorResponse } from "@angular/common/http";
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
-import { BehaviorSubject, Observable, Subject, switchMap, takeUntil } from "rxjs";
+import { BehaviorSubject, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 
-import { homeImports } from "../../home.imports";
-import { TwitchService } from "../../../../services/twitch.service";
-import { UtilsService } from "../../../../services/utils.service";
+import { homeImports } from '../../home.imports';
+import { TwitchService } from '../../../../services/twitch.service';
+import { UtilsService } from '../../../../services/utils.service';
 import {
   TwitchApiResponse,
   TwitchCredentials,
   TwitchTopGames,
   TwitchUser
-} from "../../../core/interfaces/twitch.interface";
-import { environment } from "../../../../../environments/environment";
+} from '../../../core/interfaces/twitch.interface';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -43,7 +43,10 @@ export class HomeComponent implements OnInit, OnDestroy {
             const twitchUser: TwitchUser = JSON.parse(localStorage.getItem('twitchUser')!);
             this.twitchService.twitchUser$.next(twitchUser);
 
-            return this.twitchService.getTopGames({ client_id: environment.twitchConfig.clientId, access_token: twitchToken });
+            return this.twitchService.getTopGames({
+              client_id: environment.twitchConfig.clientId,
+              access_token: twitchToken
+            });
           }),
           takeUntil(this.unsubscribe$)
         )
@@ -83,7 +86,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else if (document.location.search && document.location.search != '') {
       const parsedParams = new URLSearchParams(window.location.search);
       if (parsedParams.get('error_description')) {
-        this.matSnackBar.open(parsedParams.get('error') + ' - ' + parsedParams.get('error_description'), 'Close', this.utilsService.snackBarOptions(10000))
+        this.matSnackBar.open(parsedParams.get('error') + ' - ' + parsedParams.get('error_description'), 'Close', this.utilsService.snackBarOptions(10000));
       }
     }
   }

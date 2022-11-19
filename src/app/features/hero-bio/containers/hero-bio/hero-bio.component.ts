@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from "@angular/router";
-import { AngularFirestore } from "@angular/fire/compat/firestore";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { HttpErrorResponse } from "@angular/common/http";
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
-import { map, Observable, Subject, switchMap, takeUntil } from "rxjs";
+import { map, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 
-import { heroBioImports } from "../../hero-bio.imports";
-import { UtilsService } from "../../../../services/utils.service";
-import { HeroFullInformation } from "../../../core/interfaces/hero-full-information";
-import { Hero } from "../../../core/interfaces/hero.interface";
+import { heroBioImports } from '../../hero-bio.imports';
+import { UtilsService } from '../../../../services/utils.service';
+import { HeroFullInformation } from '../../../core/interfaces/hero-full-information';
+import { Hero } from '../../../core/interfaces/hero.interface';
 
 @Component({
   selector: 'app-hero-bio',
@@ -28,7 +28,7 @@ export class HeroBioComponent implements OnInit, OnDestroy {
         return this.afs.collection('/heroes_biography',).get()
           .pipe(map((snapshot) => {
             return { name, heroes: snapshot.docs.map(doc => <HeroFullInformation>doc.data()) };
-          }))
+          }));
       }),
       map(({ name, heroes }) => heroes.find((item: HeroFullInformation) => item.name_loc.toLowerCase() === name)),
     );
@@ -53,12 +53,12 @@ export class HeroBioComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: (heroes: Hero[]) => this.heroes = heroes,
-        error: (err: HttpErrorResponse) => this.matSnackBar.open(err.message, 'Close',  this.utilsService.snackBarOptions())
-      })
+        error: (err: HttpErrorResponse) => this.matSnackBar.open(err.message, 'Close', this.utilsService.snackBarOptions())
+      });
   }
 
   prev(hero: HeroFullInformation): void {
-    const prev = this.heroes!.find(item => hero.id === item.id + 1)
+    const prev = this.heroes!.find(item => hero.id === item.id + 1);
     this.router.navigate(['hero', prev!.name_loc.toLowerCase()]);
   }
 

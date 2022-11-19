@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from "./features/core/guards/auth.guard";
-import { UnauthorizedOnlyGuard } from "./features/core/guards/unauthorized-only.guard";
+import { AuthGuard } from './features/core/guards/auth.guard';
+import { UnauthorizedOnlyGuard } from './features/core/guards/unauthorized-only.guard';
 
 const routes: Routes = [
   {
@@ -32,8 +32,8 @@ const routes: Routes = [
     loadComponent: () => import('./features/auth/containers/auth/auth.component').then(c => c.AuthComponent),
     canActivate: [UnauthorizedOnlyGuard]
   },
-  { path: 'home', redirectTo: "/", pathMatch: "full" },
-  { path: '**', redirectTo: "/", pathMatch: "full" }
+  { path: 'home', redirectTo: '/', pathMatch: 'full' },
+  { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({

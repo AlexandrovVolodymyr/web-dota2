@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { AngularFirestore } from "@angular/fire/compat/firestore";
-import { animate, state, style, transition, trigger } from "@angular/animations";
-import { Router } from "@angular/router";
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Router } from '@angular/router';
 
-import { BehaviorSubject, map, Observable, Subject, takeUntil } from "rxjs";
+import { BehaviorSubject, map, Observable, Subject, takeUntil } from 'rxjs';
 
-import { heroes } from "../../heroes.imports";
-import { HeroesService } from "../../services/heroes.service";
-import { Hero, HeroAttributes } from "../../../core/interfaces/hero.interface";
+import { heroes } from '../../heroes.imports';
+import { HeroesService } from '../../services/heroes.service';
+import { Hero, HeroAttributes } from '../../../core/interfaces/hero.interface';
 
 @Component({
   selector: 'app-heroes',
@@ -49,7 +49,7 @@ export class HeroesComponent implements OnInit, OnDestroy {
           }
           return hero;
         }))
-      )
+      );
   }
 
   ngOnInit(): void {

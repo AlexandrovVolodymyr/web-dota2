@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
-import { ButtonModule } from "../button/button.module";
-import { FormActions } from "../../features/core/interfaces/form-actions.interface";
+import { ButtonModule } from '../button/button.module';
+import { FormActions } from '../../features/core/interfaces/form-actions.interface';
 
 @Component({
   selector: 'app-form-actions',

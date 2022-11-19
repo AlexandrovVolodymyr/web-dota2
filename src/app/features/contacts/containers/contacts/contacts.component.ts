@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { contacts } from "../../contacts.imports";
-import { Contacts } from "../../../core/interfaces/contacts-form";
+import { contacts } from '../../contacts.imports';
+import { Contacts } from '../../../core/interfaces/contacts-form';
 
 @Component({
   selector: 'app-contacts',

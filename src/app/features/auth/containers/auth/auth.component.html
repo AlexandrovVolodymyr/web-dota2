@@ -1,4 +1,4 @@
-<div class="auth" *ngIf="!(user$ | async)">
+<div class="auth" *ngIf="(user$ | async) !== null">
   <app-login-form *ngIf="isShowLoginForm$ | async; else registrationForm"
                   (loginEvent)="login($event)"
                   (switchEvent)="isShowLoginForm$.next(false)"

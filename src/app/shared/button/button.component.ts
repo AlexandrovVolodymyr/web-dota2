@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ThemePalette } from "@angular/material/core";
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-button',

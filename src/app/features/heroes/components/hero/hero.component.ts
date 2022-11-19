@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { Hero } from "../../../core/interfaces/hero.interface";
+import { Hero } from '../../../core/interfaces/hero.interface';
 
 @Component({
   selector: 'app-hero',

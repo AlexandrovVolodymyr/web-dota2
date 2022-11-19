@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 
-import { FilterAttributesComponent } from "../../components/filter-attributes/filter-attributes.component";
-import { SearchComponent } from "../../components/search/search.component";
-import { HeroAttributes } from "../../../core/interfaces/hero.interface";
+import { FilterAttributesComponent } from '../../components/filter-attributes/filter-attributes.component';
+import { SearchComponent } from '../../components/search/search.component';
+import { HeroAttributes } from '../../../core/interfaces/hero.interface';
 
 @Component({
   selector: 'app-heroes-filters',

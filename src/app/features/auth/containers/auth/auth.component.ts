@@ -1,19 +1,19 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
-import { animate, state, style, transition, trigger } from "@angular/animations";
-import { Router } from "@angular/router";
-import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { AngularFirestore } from "@angular/fire/compat/firestore";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { BehaviorSubject, Observable, Subject, switchMap, takeUntil } from "rxjs";
+import { BehaviorSubject, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 
-import { authImports } from "../../auth.imports";
-import { AuthService } from "../../services/auth.service";
-import { UserService } from "../../../../services/user.service";
-import { UtilsService } from "../../../../services/utils.service";
-import { Login, Registration } from "../../../core/interfaces/auth.interface";
-import { User } from "../../../core/interfaces/user.interface";
-import firebase from "firebase/compat";
+import { authImports } from '../../auth.imports';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../../../services/user.service';
+import { UtilsService } from '../../../../services/utils.service';
+import { Login, Registration } from '../../../core/interfaces/auth.interface';
+import { User } from '../../../core/interfaces/user.interface';
+import firebase from 'firebase/compat';
 import UserCredential = firebase.auth.UserCredential;
 import FirebaseError = firebase.FirebaseError;
 import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
@@ -72,7 +72,7 @@ export class AuthComponent implements OnDestroy {
           }
         },
         error: (err: FirebaseError) => this.matSnackBar.open(err.message, 'Close', this.utilsService.snackBarOptions())
-      })
+      });
 
   }
 
@@ -88,7 +88,7 @@ export class AuthComponent implements OnDestroy {
           this.matSnackBar.open('Account created successfully!', 'Close', this.utilsService.snackBarOptions());
         },
         error: (err: FirebaseError) => this.matSnackBar.open(err.message, 'Close', this.utilsService.snackBarOptions())
-      })
+      });
   }
 
   ngOnDestroy(): void {

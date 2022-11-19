@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, } from '@angular/core';
 
-import { User } from "../../features/core/interfaces/user.interface";
+import { User } from '../../features/core/interfaces/user.interface';
 
 @Component({
   selector: 'app-user',

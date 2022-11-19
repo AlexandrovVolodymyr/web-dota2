@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
-import { heroStatsImports } from "../../hero-bio.imports";
-import { HeroesService } from "../../../heroes/services/heroes.service";
-import { HeroFullInformation } from "../../../core/interfaces/hero-full-information";
+import { heroStatsImports } from '../../hero-bio.imports';
+import { HeroesService } from '../../../heroes/services/heroes.service';
+import { HeroFullInformation } from '../../../core/interfaces/hero-full-information';
 
 @Component({
   selector: 'app-hero-stats',
