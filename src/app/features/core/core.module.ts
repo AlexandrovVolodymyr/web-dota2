@@ -9,14 +9,14 @@ import { HeaderComponent } from './layout/header/header.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 
 import { NumberRoundPipe } from './pipes/number-round.pipe';
-import { ImgSplit } from './pipes/imgSplit';
+import { ImgSplitPipe } from './pipes/img-split.pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     NavigationComponent,
     NumberRoundPipe,
-    ImgSplit
+    ImgSplitPipe
   ],
   imports: [
     CommonModule,
@@ -28,7 +28,7 @@ import { ImgSplit } from './pipes/imgSplit';
   exports: [
     HeaderComponent,
     NumberRoundPipe,
-    ImgSplit
+    ImgSplitPipe
   ]
 })
 export class CoreModule {

@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'imgSplit'
 })
-export class ImgSplit implements PipeTransform {
+export class ImgSplitPipe implements PipeTransform {
 
   transform(source: string): string {
     const newSource: string[] = source.split('-{width}x{height}')
