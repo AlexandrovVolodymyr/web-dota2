@@ -1,11 +1,15 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from "@angular/common";
 
+import { ButtonModule } from "../button/button.module";
 import { FormActions } from "../../features/core/interfaces/form-actions.interface";
 
 @Component({
   selector: 'app-form-actions',
   templateUrl: './form-actions.component.html',
   styleUrls: ['./form-actions.component.scss'],
+  standalone: true,
+  imports: [CommonModule, ButtonModule],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormActionsComponent {
@@ -24,7 +28,7 @@ export class FormActionsComponent {
     this.actionEvent.emit();
   }
 
-  switch(event: MouseEvent) {
+  switch(event: MouseEvent): void {
     event.preventDefault();
     this.switchEvent.emit();
   }
