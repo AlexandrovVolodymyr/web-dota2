@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { MatIconModule } from "@angular/material/icon";
-import { MatRippleModule } from "@angular/material/core";
+import { AbstractControl, FormControl, FormGroup, Validators } from "@angular/forms";
 
+import { twitchAuthImports } from "../../home.imports";
 import { TwitchCredentials, TwitchForm } from "../../../core/interfaces/twitch.interface";
 import { environment } from "../../../../../environments/environment";
 
@@ -11,7 +10,7 @@ import { environment } from "../../../../../environments/environment";
   templateUrl: './twitch-auth.component.html',
   styleUrls: ['./twitch-auth.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, MatIconModule, MatRippleModule],
+  imports: twitchAuthImports,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TwitchAuthComponent {

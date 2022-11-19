@@ -4,8 +4,9 @@ import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { HttpErrorResponse } from "@angular/common/http";
 
-import { map, Observable, Subject, switchMap, takeUntil, tap } from "rxjs";
+import { map, Observable, Subject, switchMap, takeUntil } from "rxjs";
 
+import { heroBioImports } from "../../hero-bio.imports";
 import { UtilsService } from "../../../../services/utils.service";
 import { HeroFullInformation } from "../../../core/interfaces/hero-full-information";
 import { Hero } from "../../../core/interfaces/hero.interface";
@@ -14,6 +15,8 @@ import { Hero } from "../../../core/interfaces/hero.interface";
   selector: 'app-hero-bio',
   templateUrl: './hero-bio.component.html',
   styleUrls: ['./hero-bio.component.scss'],
+  standalone: true,
+  imports: heroBioImports,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
@@ -24,14 +27,10 @@ export class HeroBioComponent implements OnInit, OnDestroy {
       switchMap((name: string) => {
         return this.afs.collection('/heroes_biography',).get()
           .pipe(map((snapshot) => {
-            return {
-              name,
-              heroes: snapshot.docs.map(doc => <HeroFullInformation>doc.data())
-            }
+            return { name, heroes: snapshot.docs.map(doc => <HeroFullInformation>doc.data()) };
           }))
       }),
       map(({ name, heroes }) => heroes.find((item: HeroFullInformation) => item.name_loc.toLowerCase() === name)),
-      tap(console.log)
     );
   heroes: Hero[] | undefined;
 

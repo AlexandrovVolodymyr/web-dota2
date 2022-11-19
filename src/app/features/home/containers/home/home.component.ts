@@ -4,7 +4,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 
 import { BehaviorSubject, Observable, Subject, switchMap, takeUntil } from "rxjs";
 
-import { homeImports } from "./home.imports";
+import { homeImports } from "../../home.imports";
 import { TwitchService } from "../../../../services/twitch.service";
 import { UtilsService } from "../../../../services/utils.service";
 import {

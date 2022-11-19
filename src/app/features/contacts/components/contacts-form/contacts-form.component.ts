@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from "@angular/forms";
 
-import { contactsFormImports } from "./contacts-form.imports";
+import { contactsFormImports } from "../../contacts.imports";
 import { FormActions } from "../../../core/interfaces/form-actions.interface";
 import { ContactsForm } from "../../../core/interfaces/contacts-form";
 

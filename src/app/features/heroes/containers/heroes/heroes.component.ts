@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 
 import { BehaviorSubject, map, Observable, Subject, takeUntil } from "rxjs";
 
-import { heroes } from "./hero.imports";
+import { heroes } from "../../heroes.imports";
 import { HeroesService } from "../../services/heroes.service";
 import { Hero, HeroAttributes } from "../../../core/interfaces/hero.interface";
 

@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgForOf } from "@angular/common";
 
 import { TwitchTopGames } from "../../../core/interfaces/twitch.interface";
-import { ImgSplit } from "../../../core/pipes/imgSplit";
 import { CoreModule } from "../../../core/core.module";
-import { NgForOf } from "@angular/common";
 
 @Component({
   selector: 'app-twitch-top-games',

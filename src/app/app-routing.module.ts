@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'hero/:name',
-    loadChildren: () => import('./features/hero-bio/hero-bio.module').then(m => m.HeroBioModule),
+    loadComponent: () => import('./features/hero-bio/containers/hero-bio/hero-bio.component').then(c => c.HeroBioComponent),
     canActivate: [AuthGuard],
   },
   {

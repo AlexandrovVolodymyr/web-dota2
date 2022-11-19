@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { NgForOf, NgIf } from "@angular/common";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
+import { twitchUserImports } from "../../home.imports";
 import { TwitchUser } from "../../../core/interfaces/twitch.interface";
 
 @Component({
@@ -9,7 +9,7 @@ import { TwitchUser } from "../../../core/interfaces/twitch.interface";
   templateUrl: './twitch-user.component.html',
   styleUrls: ['./twitch-user.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, NgForOf, NgIf],
+  imports: twitchUserImports,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TwitchUserComponent implements OnInit {
