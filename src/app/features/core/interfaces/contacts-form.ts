@@ -6,3 +6,10 @@ export interface ContactsForm {
   email: FormControl<string>;
   message: FormControl<string>;
 }
+
+export interface Contacts {
+  firstName: string;
+  lastName: string | null;
+  email: string;
+  message: string;
+}

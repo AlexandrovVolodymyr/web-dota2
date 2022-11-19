@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { contactsFormImports } from "../../contacts.imports";
 import { FormActions } from "../../../core/interfaces/form-actions.interface";
-import { ContactsForm } from "../../../core/interfaces/contacts-form";
+import { Contacts, ContactsForm } from "../../../core/interfaces/contacts-form";
 
 @Component({
   selector: 'app-contacts-form',
@@ -14,6 +14,8 @@ import { ContactsForm } from "../../../core/interfaces/contacts-form";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactsFormComponent {
+  @Output() sendEvent = new EventEmitter<Contacts>();
+
   contactsForm: FormGroup = new FormGroup<ContactsForm>({
     firstName: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.maxLength(30)] }),
     lastName: new FormControl('', [Validators.maxLength(30)]),
@@ -49,6 +51,11 @@ export class ContactsFormComponent {
   }
 
   send(): void {
-    this.contactsForm.markAllAsTouched();
+    if (this.contactsForm.invalid) {
+      this.contactsForm.markAllAsTouched();
+      return;
+    }
+
+    this.contactsForm.reset();
   }
 }
