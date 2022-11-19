@@ -8,9 +8,9 @@ describe('FilterComplexityComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FilterComplexityComponent ]
+      declarations: [FilterComplexityComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FilterComplexityComponent);
     component = fixture.componentInstance;

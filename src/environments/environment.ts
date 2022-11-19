@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyD9d1WPwF16yNqCxkDB5Msx13aRsnymslc",
-    authDomain: "web-dota2-367017.firebaseapp.com",
-    projectId: "web-dota2-367017",
-    storageBucket: "web-dota2-367017.appspot.com",
-    messagingSenderId: "293796661410",
-    appId: "1:293796661410:web:26fd6d4f63f662512baffb",
-    measurementId: "G-75VB5L70H9"
+    apiKey: 'AIzaSyD9d1WPwF16yNqCxkDB5Msx13aRsnymslc',
+    authDomain: 'web-dota2-367017.firebaseapp.com',
+    projectId: 'web-dota2-367017',
+    storageBucket: 'web-dota2-367017.appspot.com',
+    messagingSenderId: '293796661410',
+    appId: '1:293796661410:web:26fd6d4f63f662512baffb',
+    measurementId: 'G-75VB5L70H9'
   },
   twitchConfig: {
     clientId: 'erq8dka4bi18meajzcd1r0888c6h8n',

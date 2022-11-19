@@ -1,5 +1,5 @@
 .steam-form {
-  background: linear-gradient(87deg, rgba(6,13,27,1) 0%, rgba(30,41,53,1) 100%);
+  background: linear-gradient(87deg, rgba(6, 13, 27, 1) 0%, rgba(30, 41, 53, 1) 100%);
   border-radius: 1px;
   min-width: 480px;
   padding-bottom: 40px;
@@ -73,8 +73,8 @@
       padding-left: 93px;
 
       button {
-        background: rgb(6,26,51);
-        background: linear-gradient(87deg, rgba(6,26,51,1) 1%, rgba(21,35,54,1) 100%);
+        background: rgb(6, 26, 51);
+        background: linear-gradient(87deg, rgba(6, 26, 51, 1) 1%, rgba(21, 35, 54, 1) 100%);
         border-radius: 2px;
         border: none;
         color: #c3cdda;
@@ -92,11 +92,11 @@
         }
 
         &:hover {
-          background: linear-gradient(87deg, rgba(6,10,20,1) 1%, rgba(21,35,54,1) 100%);
+          background: linear-gradient(87deg, rgba(6, 10, 20, 1) 1%, rgba(21, 35, 54, 1) 100%);
         }
 
         &:disabled {
-          background: rgba(30,41,53,1);
+          background: rgba(30, 41, 53, 1);
         }
       }
     }

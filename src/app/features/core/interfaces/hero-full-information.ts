@@ -34,5 +34,5 @@ export interface HeroFullInformation {
   max_mana: number;
   mana_regen: number;
   abilities: any[]; // TODO: add type
-  talents: any[] // TODO: add type
+  talents: any[]; // TODO: add type
 }

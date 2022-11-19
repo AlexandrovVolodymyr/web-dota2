@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component, inject,
-  Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { heroImports } from '../../hero-bio.imports';

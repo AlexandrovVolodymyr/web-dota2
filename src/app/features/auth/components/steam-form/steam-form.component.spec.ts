@@ -8,9 +8,9 @@ describe('SteamFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SteamFormComponent ]
+      declarations: [SteamFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SteamFormComponent);
     component = fixture.componentInstance;

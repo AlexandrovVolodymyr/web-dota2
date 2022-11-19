@@ -1,4 +1,4 @@
-import { Attributes } from "../enums/attributes";
+import { Attributes } from '../enums/attributes';
 
 export interface Hero {
   attribute_img: string;

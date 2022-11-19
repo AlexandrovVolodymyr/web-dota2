@@ -7,15 +7,15 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
-import { Subject, takeUntil } from "rxjs";
+import { Subject, takeUntil } from 'rxjs';
 
-import { AuthService } from "../../../auth/services/auth.service";
-import { UserService } from "../../../../services/user.service";
-import { TwitchService } from "../../../../services/twitch.service";
-import { ProfileComponent } from "../../../profile/containers/profile/profile.component";
-import { User } from "../../interfaces/user.interface";
+import { AuthService } from '../../../auth/services/auth.service';
+import { UserService } from '../../../../services/user.service';
+import { TwitchService } from '../../../../services/twitch.service';
+import { ProfileComponent } from '../../../profile/containers/profile/profile.component';
+import { User } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-header',

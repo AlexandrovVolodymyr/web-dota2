@@ -8,9 +8,9 @@ describe('TwitchAuthComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TwitchAuthComponent ]
+      declarations: [TwitchAuthComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TwitchAuthComponent);
     component = fixture.componentInstance;

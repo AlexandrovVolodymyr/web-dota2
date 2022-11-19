@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { contactsFormImports } from "../../contacts.imports";
-import { FormActions } from "../../../core/interfaces/form-actions.interface";
-import { Contacts, ContactsForm } from "../../../core/interfaces/contacts-form";
+import { contactsFormImports } from '../../contacts.imports';
+import { FormActions } from '../../../core/interfaces/form-actions.interface';
+import { Contacts, ContactsForm } from '../../../core/interfaces/contacts-form';
 
 @Component({
   selector: 'app-contacts-form',
@@ -20,7 +20,10 @@ export class ContactsFormComponent {
     firstName: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.maxLength(30)] }),
     lastName: new FormControl('', [Validators.maxLength(30)]),
     email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
-    message: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(5), Validators.maxLength(300)] })
+    message: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(5), Validators.maxLength(300)]
+    })
   });
 
   properties: FormActions = {

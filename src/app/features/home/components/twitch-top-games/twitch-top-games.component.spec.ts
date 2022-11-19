@@ -8,9 +8,9 @@ describe('TwitchTopGamesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TwitchTopGamesComponent ]
+      declarations: [TwitchTopGamesComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TwitchTopGamesComponent);
     component = fixture.componentInstance;

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 
-import { map, Observable, of } from "rxjs";
+import { map, Observable, of } from 'rxjs';
 
-import { AuthService } from "../../auth/services/auth.service";
-import { UserService } from "../../../services/user.service";
-import { User } from "../interfaces/user.interface";
+import { AuthService } from '../../auth/services/auth.service';
+import { UserService } from '../../../services/user.service';
+import { User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,7 @@ export class AuthGuard implements CanActivate {
 
           return true;
         })
-      )
+      );
   }
 
 }

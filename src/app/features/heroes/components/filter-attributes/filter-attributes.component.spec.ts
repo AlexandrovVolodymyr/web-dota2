@@ -8,9 +8,9 @@ describe('FilterAttributesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FilterAttributesComponent ]
+      declarations: [FilterAttributesComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FilterAttributesComponent);
     component = fixture.componentInstance;

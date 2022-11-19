@@ -8,9 +8,9 @@ describe('TalentTreeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TalentTreeComponent ]
+      declarations: [TalentTreeComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TalentTreeComponent);
     component = fixture.componentInstance;
