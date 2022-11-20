@@ -1,15 +1,31 @@
-.search {
-  min-width: 300px;
-  padding: 0.5rem;
+:host {
+  @media screen and (max-width: 875px) {
+    flex-grow: 1;
+    padding-left: 1rem;
+  }
+  @media screen and (max-width: 660px) {
+    flex-basis: 100%;
+    padding-left: 0;
+    padding-top: 1rem;
+  }
 
-  .form__row {
-    margin-bottom: 0;
 
-    input {
-      background-image: url('/assets/img/icons/search.svg');
-      background-repeat: no-repeat;
-      background-position: 10px 50%;
-      padding-left: 40px;
+  .search {
+    min-width: 300px;
+    padding: 0.5rem;
+    @media screen and (max-width: 660px) {
+      min-width: 100%;
+    }
+
+    .form__row {
+      margin-bottom: 0;
+
+      input {
+        background-image: url('/assets/img/icons/search.svg');
+        background-repeat: no-repeat;
+        background-position: 10px 50%;
+        padding-left: 40px;
+      }
     }
   }
 }

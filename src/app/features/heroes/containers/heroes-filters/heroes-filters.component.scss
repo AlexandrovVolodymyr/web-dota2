@@ -12,6 +12,9 @@
     max-width: $container;
     margin: 1rem auto;
     padding: 1rem 1.5rem;
+    @media screen and (max-width: 875px) {
+      flex-wrap: wrap;
+    }
 
     &__title {
       color: $white;
@@ -19,6 +22,11 @@
       font-family: $font-secondary;
       font-weight: 800;
       text-transform: uppercase;
+      @media screen and (max-width: 875px) {
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+        text-align: center;
+      }
     }
   }
 }

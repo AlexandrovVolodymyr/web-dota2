@@ -1,25 +1,47 @@
 @import 'src/assets/styles/variables';
 
-.attribute {
-  display: flex;
-  align-items: center;
-
-  &__title {
-    color: $text-color-light;
-    font-size: 18px;
-    font-family: $font-secondary;
-    font-weight: 600;
-    text-transform: uppercase;
+:host {
+  @media screen and (max-width: 660px) {
+    flex-grow: 1;
   }
 
-  &__values {
-    img {
-      cursor: pointer;
-      filter: grayscale(100%);
-      margin-left: 10px;
+  .attribute {
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 660px) {
+      flex-direction: column;
+    }
 
-      &.active {
-        filter: unset;
+    &__title {
+      color: $text-color-light;
+      font-size: 18px;
+      font-family: $font-secondary;
+      font-weight: 600;
+      text-transform: uppercase;
+      @media screen and (max-width: 660px) {
+        font-size: 14px;
+        margin-bottom: 1rem;
+      }
+    }
+
+    &__values {
+      img {
+        cursor: pointer;
+        filter: grayscale(100%);
+        margin-left: 10px;
+        @media screen and (max-width: 660px) {
+          max-width: 30px;
+          margin-left: 0;
+          margin-right: 1rem;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        &.active {
+          filter: unset;
+        }
       }
     }
   }
