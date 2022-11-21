@@ -3,7 +3,12 @@ import { HttpClient } from '@angular/common/http';
 
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
-import { TwitchApiResponse, TwitchTopGames, TwitchUser } from '../features/core/interfaces/twitch.interface';
+import {
+  TwitchApiResponse,
+  TwitchStream,
+  TwitchTopGames,
+  TwitchUser
+} from '../features/core/interfaces/twitch.interface';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -30,6 +35,18 @@ export class TwitchService {
     access_token
   }: { client_id: string, access_token: string }): Observable<TwitchApiResponse<TwitchTopGames[]>> {
     return this.http.get<TwitchApiResponse<TwitchTopGames[]>>(`${environment.twitchConfig.helix}/games/top?&first=15`, {
+      'headers': {
+        'Client-ID': client_id,
+        'Authorization': 'Bearer ' + access_token
+      }
+    });
+  }
+
+  getStreams({
+    client_id,
+    access_token
+  }: { client_id: string, access_token: string }): Observable<TwitchApiResponse<TwitchStream[]>> {
+    return this.http.get<TwitchApiResponse<TwitchStream[]>>(`${environment.twitchConfig.helix}/streams?game_id=${environment.twitchConfig.dota_id}`, {
       'headers': {
         'Client-ID': client_id,
         'Authorization': 'Bearer ' + access_token

@@ -2,14 +2,15 @@ import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { BehaviorSubject, Observable, Subject, switchMap, takeUntil } from 'rxjs';
+import { BehaviorSubject, combineLatest, mergeMap, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 
 import { homeImports } from '../../home.imports';
 import { TwitchService } from '../../../../services/twitch.service';
 import { UtilsService } from '../../../../services/utils.service';
 import {
+  CombinedTwitchApiResponse,
   TwitchApiResponse,
-  TwitchCredentials,
+  TwitchCredentials, TwitchStream,
   TwitchTopGames,
   TwitchUser
 } from '../../../core/interfaces/twitch.interface';
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   twitchUser$: Observable<TwitchUser | null> = this.twitchService.twitchUserData$;
   twitchTopGames$: BehaviorSubject<TwitchTopGames[]> = new BehaviorSubject<TwitchTopGames[]>([]);
+  twitchStreams$: BehaviorSubject<TwitchStream[]> = new BehaviorSubject<TwitchStream[]>([]);
 
   private unsubscribe$ = new Subject<void>();
 
@@ -37,23 +39,36 @@ export class HomeComponent implements OnInit, OnDestroy {
     const twitchToken = JSON.parse(localStorage.getItem('twitchAccessToken')!);
 
     if (twitchToken) {
+      const streams$: Observable<TwitchApiResponse<TwitchStream[]>> = this.twitchService.getStreams({
+        client_id: environment.twitchConfig.clientId,
+        access_token: twitchToken
+      });
+      const topGames$: Observable<TwitchApiResponse<TwitchTopGames[]>> = this.twitchService.getTopGames({
+        client_id: environment.twitchConfig.clientId,
+        access_token: twitchToken
+      });
+
       this.twitchService.isValidToken(twitchToken)
         .pipe(
-          switchMap(() => {
+          mergeMap(() => {
             const twitchUser: TwitchUser = JSON.parse(localStorage.getItem('twitchUser')!);
             this.twitchService.twitchUser$.next(twitchUser);
 
-            return this.twitchService.getTopGames({
-              client_id: environment.twitchConfig.clientId,
-              access_token: twitchToken
-            });
+            return combineLatest([streams$, topGames$]);
           }),
           takeUntil(this.unsubscribe$)
         )
         .subscribe({
-          next: ({ data }: TwitchApiResponse<TwitchTopGames[]>) => this.twitchTopGames$.next(data),
+          next: ([streams, topGames]: CombinedTwitchApiResponse) => {
+            this.twitchStreams$.next(streams.data);
+            this.twitchTopGames$.next(topGames.data);
+          },
           error: (err: HttpErrorResponse) => this.handleError(err)
         });
+      // .subscribe({
+      //   next: ({ data }: TwitchApiResponse<TwitchTopGames[]>) => this.twitchTopGames$.next(data),
+      //   error: (err: HttpErrorResponse) => this.handleError(err)
+      // });
     }
 
     if (document.location.hash && document.location.hash != '') {

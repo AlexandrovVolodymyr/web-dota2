@@ -7,7 +7,10 @@
     <ng-container *ngIf="twitchUser$ | async as twitchUser; else twitchAuthTpl">
       <app-twitch-user [twitchUser]="twitchUser" (updateEvent)="updateUser($event)"></app-twitch-user>
       <h3 class="twitch-title">Twitch Top Games</h3>
-      <app-twitch-top-games [topGames]="twitchTopGames$ | async" (openGameEvent)="openGame($event)"></app-twitch-top-games>
+      <app-twitch-top-games [topGames]="twitchTopGames$ | async"
+                            (openGameEvent)="openGame($event)"></app-twitch-top-games>
+      <h3 class="twitch-title">Twitch Dota 2 Streams</h3>
+      <app-twitch-streams [streams]="twitchStreams$ | async"></app-twitch-streams>
     </ng-container>
     <ng-template #twitchAuthTpl>
       <app-twitch-auth (submitEvent)="loginToTwitch($event)"></app-twitch-auth>

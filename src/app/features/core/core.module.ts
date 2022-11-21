@@ -10,13 +10,15 @@ import { UserComponent } from '../../shared/user/user.component';
 
 import { NumberRoundPipe } from './pipes/number-round.pipe';
 import { ImgSplitPipe } from './pipes/img-split.pipe';
+import { TwitchViewersPipe } from './pipes/twitch-viewers.pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     NavigationComponent,
     NumberRoundPipe,
-    ImgSplitPipe
+    ImgSplitPipe,
+    TwitchViewersPipe
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { ImgSplitPipe } from './pipes/img-split.pipe';
   exports: [
     HeaderComponent,
     NumberRoundPipe,
-    ImgSplitPipe
+    ImgSplitPipe,
+    TwitchViewersPipe
   ]
 })
 export class CoreModule {

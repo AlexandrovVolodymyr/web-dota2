@@ -1,14 +1,14 @@
-<ul class="top-games">
-  <li class="top-games__item" *ngFor="let game of topGames" (click)="openGame(game)">
-    <span class="corner corner--left"></span>
-    <span class="corner corner--right"></span>
-    <div class="top-game">
-      <div class="top-game__image">
+<ul class="twitch-list top-games">
+  <li class="twitch-list__item" *ngFor="let game of topGames" (click)="openGame(game)">
+    <div class="card">
+      <div class="card__image">
+        <span class="corner corner--left"></span>
+        <span class="corner corner--right"></span>
         <img [src]="game.box_art_url | imgSplit" [alt]="game.name">
       </div>
 
-      <div class="top-game__details">
-        <div class="top-game__text">{{ game.name }}</div>
+      <div class="card__details">
+        <div class="card__text">{{ game.name }}</div>
       </div>
     </div>
   </li>

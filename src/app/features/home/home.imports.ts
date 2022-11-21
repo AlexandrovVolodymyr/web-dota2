@@ -7,7 +7,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TwitchAuthComponent } from './components/twitch-auth/twitch-auth.component';
 import { TwitchUserComponent } from './components/twitch-user/twitch-user.component';
 import { TwitchTopGamesComponent } from './components/twitch-top-games/twitch-top-games.component';
+import { TwitchStreamsComponent } from './components/twitch-streams/twitch-streams.component';
 
-export const homeImports = [TwitchAuthComponent, TwitchUserComponent, TwitchTopGamesComponent, CommonModule, MatSnackBarModule];
+export const homeImports = [TwitchAuthComponent, TwitchUserComponent, TwitchTopGamesComponent, TwitchStreamsComponent, CommonModule, MatSnackBarModule];
 export const twitchUserImports = [ReactiveFormsModule, NgForOf, NgIf];
 export const twitchAuthImports = [ReactiveFormsModule, MatIconModule, MatRippleModule];
