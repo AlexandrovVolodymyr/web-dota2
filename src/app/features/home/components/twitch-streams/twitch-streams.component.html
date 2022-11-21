@@ -1,0 +1,18 @@
+<ul class="twitch-list streams">
+  <li class="twitch-list__item" *ngFor="let stream of streams">
+    <div class="card">
+      <div class="card__image">
+        <span class="card__status">{{ stream.type }}</span>
+        <span class="card__viewers">{{ stream.viewer_count | twitchViewers }}</span>
+        <span class="corner corner--left"></span>
+        <span class="corner corner--right"></span>
+        <img [src]="stream.thumbnail_url | imgSplit" [alt]="stream.user_name">
+      </div>
+
+      <div class="card__details">
+        <div class="card__text">{{ stream.title }}</div>
+        <div class="card__user-name">{{ stream.user_name }}</div>
+      </div>
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,148 @@
+@import 'src/assets/styles/variables';
+
+.twitch-list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  @media screen and (max-width: 767px) {
+    justify-content: center;
+  }
+
+  &__item {
+    cursor: pointer;
+    flex: 1 0 auto;
+    width: 16rem;
+    max-width: 50%;
+    margin: 10px;
+    @media screen and (max-width: 767px) {
+      width: 14rem;
+    }
+    @media screen and (max-width: 650px) {
+      width: 12rem;
+    }
+    @media screen and (max-width: 550px) {
+      flex-basis: 100%;
+      max-width: 100%;
+      margin: 0 0 1rem;
+    }
+
+    &:hover {
+      .card__image {
+        img {
+          transform: translate3d($twitch-offset-value, -$twitch-offset-value, 0px);
+        }
+      }
+
+      .corner {
+        &--left {
+          transform: translateY(-$twitch-offset-value) scale(1);
+        }
+
+        &--right {
+          transform: translateX($twitch-offset-value) scale(1);
+        }
+      }
+
+      .card__status, .card__viewers {
+        transform: translate($twitch-offset-value, -$twitch-offset-value);
+      }
+    }
+
+    .corner {
+      position: absolute;
+      transition: 0.2s ease;
+
+      &--left {
+        border-top: $twitch-offset-value solid transparent;
+        border-bottom: $twitch-offset-value solid transparent;
+        border-right: $twitch-offset-value solid $twitch-color;
+        left: 0;
+        top: 0;
+        transform-origin: left center;
+        transform: translateY(-$twitch-offset-value) scale(0);
+      }
+
+      &--right {
+        border-left: $twitch-offset-value solid transparent;
+        border-right: $twitch-offset-value solid transparent;
+        border-top: $twitch-offset-value solid $twitch-color;
+        top: calc(100% - $twitch-offset-value);
+        right: 0;
+        transform-origin: center bottom;
+        transform: translateX($twitch-offset-value) scale(0);
+      }
+    }
+
+    .card {
+      font-family: $twitch-font;
+      display: flex;
+      flex-direction: column;
+
+      &__image {
+        background-color: $twitch-color;
+        display: flex;
+        position: relative;
+
+        img {
+          max-width: 100%;
+          transition: 0.2s ease;
+        }
+      }
+
+      &__details {
+        padding: 10px 0;
+      }
+
+      &__text, &__user-name {
+        padding-right: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &__text {
+        color: $white;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      &__user-name {
+        color: $twitch-text;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      &__status {
+        background-color: $twitch-red;
+        border-radius: 5px;
+        color: $white;
+        letter-spacing: 1px;
+        line-height: 1;
+        font-size: 11px;
+        font-weight: 600;
+        position: absolute;
+        left: 8px;
+        top: 8px;
+        padding: 5px;
+        text-transform: uppercase;
+        transition: 0.2s ease;
+        z-index: 1;
+      }
+
+      &__viewers {
+        background-color: $twitch-overlay;
+        border-radius: 3px;
+        color: $white;
+        font-size: 10px;
+        font-weight: 300;
+        line-height: 1;
+        position: absolute;
+        left: 8px;
+        bottom: 8px;
+        padding: 5px;
+        transition: 0.2s ease;
+        z-index: 1;
+      }
+    }
+  }
+}
