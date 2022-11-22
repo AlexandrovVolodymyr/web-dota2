@@ -19,11 +19,14 @@
     }
 
     .address-part {
-      background-color: $text-color-light;
+      background: $text-color-light url('/assets/img/letter_send.svg') no-repeat center;
       display: flex;
       flex-direction: column;
       width: 550px;
       padding: 30px 34px 30px;
+      @media screen and (max-width: 1127px) {
+        background-position: right bottom;
+      }
       @media screen and (max-width: 578px) {
         width: 100%;
       }

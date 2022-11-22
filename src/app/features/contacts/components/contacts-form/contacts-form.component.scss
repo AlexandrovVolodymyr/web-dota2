@@ -1,15 +1,22 @@
+@import 'src/assets/styles/variables';
+
 :host {
   @media screen and (max-width: 578px) {
     width: 100%;
   }
 
   .contacts-form {
+    background: $black url('/assets/img/circles.png') no-repeat right bottom;
     max-width: 550px;
     margin: 0;
     padding-top: 30px;
     @media screen and (max-width: 578px) {
+      background-size: 50%;
       min-width: 100%;
       max-width: 100%;
+    }
+    @media screen and (max-width: 375px) {
+      background-size: 35%;
     }
   }
 }
