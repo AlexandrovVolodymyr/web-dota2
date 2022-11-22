@@ -52,3 +52,8 @@ export interface TwitchStream {
 }
 
 export type CombinedTwitchApiResponse = [TwitchApiResponse<TwitchStream[]>, TwitchApiResponse<TwitchTopGames[]>];
+
+export interface TwitchHeaders {
+  client_id: string;
+  access_token: string;
+}

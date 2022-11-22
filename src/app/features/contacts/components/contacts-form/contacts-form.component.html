@@ -1,4 +1,4 @@
-<form class="contacts-form form" [formGroup]="contactsForm">
+<form class="form contacts-form" [formGroup]="contactsForm">
   <app-form-header [title]="'Get In Touch'" [isCloseIcon]="false"></app-form-header>
 
   <div class="form__row" [class.form__row--invalid]="firstName.invalid && firstName.touched">
@@ -14,7 +14,8 @@
     <span class="form__border"></span>
   </div>
   <div class="form__row" [class.form__row--invalid]="message.invalid && message.touched">
-    <textarea class="form__control form__control--area" placeholder="How can we help you?" formControlName="message"></textarea>
+    <textarea class="form__control form__control--area" placeholder="How can we help you?"
+              formControlName="message"></textarea>
     <span class="form__border"></span>
   </div>
 

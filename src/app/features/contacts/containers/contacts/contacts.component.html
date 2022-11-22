@@ -1,5 +1,27 @@
 <div class="contacts">
   <div class="container">
+    <div class="address-part">
+      <h3 class="address-part__title">
+        <span>Contact Us</span>
+        <span>Any question or remarks? Just write us a message!</span>
+      </h3>
+      <div class="address-part__info">
+        <div class="phone">
+          <mat-icon>phone</mat-icon>
+          <a href="tel: +12345678">+12345678</a>
+        </div>
+        <div class="email">
+          <mat-icon>email</mat-icon>
+          <a href="mailto: dev.alexandrovhub@gmail.com">dev.alexandrovhub@gmail.com</a>
+        </div>
+        <div class="address">
+          <mat-icon>home</mat-icon>
+          <address>
+            132 Dartmouth Street Boston, Massachusetts 02156 United States
+          </address>
+        </div>
+      </div>
+    </div>
     <app-contacts-form (sendEvent)="send($event)"></app-contacts-form>
   </div>
 </div>

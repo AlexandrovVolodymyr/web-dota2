@@ -4,10 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
 import {
-  TwitchApiResponse,
-  TwitchStream,
-  TwitchTopGames,
-  TwitchUser
+  TwitchApiResponse, TwitchHeaders, TwitchStream, TwitchTopGames, TwitchUser
 } from '../features/core/interfaces/twitch.interface';
 import { environment } from '../../environments/environment';
 
@@ -22,53 +19,35 @@ export class TwitchService {
   constructor(private http: HttpClient) {
   }
 
+  twitchHelixHeaders({ client_id, access_token }: TwitchHeaders) {
+    return { 'Client-ID': client_id, 'Authorization': 'Bearer ' + access_token };
+  }
+
   isValidToken(twitchToken: string) {
-    return this.http.get(`${environment.twitchConfig.url}/validate`, {
-      headers: {
-        'Authorization': 'OAuth ' + twitchToken
-      }
-    });
+    return this.http.get(`${environment.twitchConfig.url}/validate`, { headers: { 'Authorization': 'OAuth ' + twitchToken } });
   }
 
-  getTopGames({
-    client_id,
-    access_token
-  }: { client_id: string, access_token: string }): Observable<TwitchApiResponse<TwitchTopGames[]>> {
+  getTopGames({ client_id, access_token }: TwitchHeaders): Observable<TwitchApiResponse<TwitchTopGames[]>> {
     return this.http.get<TwitchApiResponse<TwitchTopGames[]>>(`${environment.twitchConfig.helix}/games/top?&first=15`, {
-      'headers': {
-        'Client-ID': client_id,
-        'Authorization': 'Bearer ' + access_token
-      }
+      headers: this.twitchHelixHeaders({ client_id, access_token })
     });
   }
 
-  getStreams({
-    client_id,
-    access_token
-  }: { client_id: string, access_token: string }): Observable<TwitchApiResponse<TwitchStream[]>> {
+  getStreams({ client_id, access_token }: TwitchHeaders): Observable<TwitchApiResponse<TwitchStream[]>> {
     return this.http.get<TwitchApiResponse<TwitchStream[]>>(`${environment.twitchConfig.helix}/streams?game_id=${environment.twitchConfig.dota_id}`, {
-      'headers': {
-        'Client-ID': client_id,
-        'Authorization': 'Bearer ' + access_token
-      }
+      headers: this.twitchHelixHeaders({ client_id, access_token })
     });
   }
 
-  getUser({ client_id, access_token }: { client_id: string, access_token: string }): Observable<TwitchUser> {
+  getUser({ client_id, access_token }: TwitchHeaders): Observable<TwitchUser> {
     return this.http.get(`${environment.twitchConfig.helix}/users`, {
-      'headers': {
-        'Client-ID': client_id,
-        'Authorization': 'Bearer ' + access_token
-      }
+      headers: this.twitchHelixHeaders({ client_id, access_token })
     }).pipe(map((user: any) => user.data[0]));
   }
 
   updateUser(description: string, client_id: string, access_token: string): Observable<TwitchUser> {
     return this.http.put(`${environment.twitchConfig.helix}/users`, { description }, {
-      'headers': {
-        'Client-ID': client_id,
-        'Authorization': 'Bearer ' + access_token
-      }
+      headers: this.twitchHelixHeaders({ client_id, access_token })
     }).pipe(map((user: any) => user.data[0]));
   }
 }

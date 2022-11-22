@@ -25,9 +25,9 @@ import { environment } from '../../../../../environments/environment';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  twitchService = inject(TwitchService);
-  matSnackBar = inject(MatSnackBar);
-  utilsService = inject(UtilsService);
+  private twitchService = inject(TwitchService);
+  private matSnackBar = inject(MatSnackBar);
+  private utilsService = inject(UtilsService);
 
   twitchUser$: Observable<TwitchUser | null> = this.twitchService.twitchUserData$;
   twitchTopGames$: BehaviorSubject<TwitchTopGames[]> = new BehaviorSubject<TwitchTopGames[]>([]);
@@ -39,14 +39,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     const twitchToken = JSON.parse(localStorage.getItem('twitchAccessToken')!);
 
     if (twitchToken) {
-      const streams$: Observable<TwitchApiResponse<TwitchStream[]>> = this.twitchService.getStreams({
-        client_id: environment.twitchConfig.clientId,
-        access_token: twitchToken
-      });
-      const topGames$: Observable<TwitchApiResponse<TwitchTopGames[]>> = this.twitchService.getTopGames({
-        client_id: environment.twitchConfig.clientId,
-        access_token: twitchToken
-      });
+      const streams$: Observable<TwitchApiResponse<TwitchStream[]>> = this.getStreams$(twitchToken);
+      const topGames$: Observable<TwitchApiResponse<TwitchTopGames[]>> = this.getTopGames$(twitchToken);
 
       this.twitchService.isValidToken(twitchToken)
         .pipe(
@@ -65,10 +59,6 @@ export class HomeComponent implements OnInit, OnDestroy {
           },
           error: (err: HttpErrorResponse) => this.handleError(err)
         });
-      // .subscribe({
-      //   next: ({ data }: TwitchApiResponse<TwitchTopGames[]>) => this.twitchTopGames$.next(data),
-      //   error: (err: HttpErrorResponse) => this.handleError(err)
-      // });
     }
 
     if (document.location.hash && document.location.hash != '') {
@@ -89,12 +79,15 @@ export class HomeComponent implements OnInit, OnDestroy {
               this.twitchService.twitchUser$.next(user);
               localStorage.setItem('twitchUser', JSON.stringify(user));
 
-              return this.twitchService.getTopGames({ client_id, access_token });
+              return combineLatest([this.getStreams$(access_token), this.getTopGames$(access_token)]);
             }),
             takeUntil(this.unsubscribe$)
           )
           .subscribe({
-            next: ({ data }: TwitchApiResponse<TwitchTopGames[]>) => this.twitchTopGames$.next(data),
+            next: ([streams, topGames]: CombinedTwitchApiResponse) => {
+              this.twitchStreams$.next(streams.data);
+              this.twitchTopGames$.next(topGames.data);
+            },
             error: (err: HttpErrorResponse) => this.handleError(err)
           });
       }
@@ -135,6 +128,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.twitchService.twitchUser$.next(null);
 
     this.matSnackBar.open(err.message, 'Close', this.utilsService.snackBarOptions(10000));
+  }
+
+  private getStreams$(twitchToken: string): Observable<TwitchApiResponse<TwitchStream[]>> {
+    return this.twitchService.getStreams({ client_id: environment.twitchConfig.clientId, access_token: twitchToken });
+  }
+
+  private getTopGames$(twitchToken: string): Observable<TwitchApiResponse<TwitchTopGames[]>> {
+    return this.twitchService.getTopGames({ client_id: environment.twitchConfig.clientId, access_token: twitchToken });
   }
 
   ngOnDestroy(): void {

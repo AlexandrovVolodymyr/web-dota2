@@ -1,4 +1,15 @@
-.contacts-form {
-  max-width: 550px;
-  padding-top: 30px;
+:host {
+  @media screen and (max-width: 578px) {
+    width: 100%;
+  }
+
+  .contacts-form {
+    max-width: 550px;
+    margin: 0;
+    padding-top: 30px;
+    @media screen and (max-width: 578px) {
+      min-width: 100%;
+      max-width: 100%;
+    }
+  }
 }

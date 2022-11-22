@@ -20,6 +20,11 @@ export const environment = {
     helix: 'https://api.twitch.tv/helix',
     dota_id: '29595',
     redirect_uri: 'http://localhost:4200/home'
+  },
+  emailjs: {
+    publicKey: 'AaRlFYEuEd9tC-hf-',
+    serviceId: 'service_0wddr5i',
+    templateId: 'template_ieksr9r'
   }
 };
 

@@ -59,6 +59,7 @@ export class ContactsFormComponent {
       return;
     }
 
+    this.sendEvent.emit(this.contactsForm.value);
     this.contactsForm.reset();
   }
 }
