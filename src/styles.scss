@@ -60,3 +60,7 @@ mat-icon {
   backdrop-filter: blur(4px);
   color: $text-color-light;
 }
+
+.skeleton-loader {
+  background: $text-color-light no-repeat !important;
+}

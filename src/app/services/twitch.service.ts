@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { BehaviorSubject, map, Observable } from 'rxjs';
@@ -12,12 +12,11 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class TwitchService {
+  private http: HttpClient = inject(HttpClient);
+  
   twitchAccessToken$: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
   twitchUser$: BehaviorSubject<TwitchUser | null> = new BehaviorSubject<TwitchUser | null>(null);
   twitchUserData$: Observable<TwitchUser | null> = this.twitchUser$.asObservable();
-
-  constructor(private http: HttpClient) {
-  }
 
   twitchHelixHeaders({ client_id, access_token }: TwitchHeaders) {
     return { 'Client-ID': client_id, 'Authorization': 'Bearer ' + access_token };

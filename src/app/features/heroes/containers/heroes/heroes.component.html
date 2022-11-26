@@ -7,9 +7,7 @@
     </span>
   </h2>
 
-  <app-heroes-filters (attributeEvent)="setAttributes($event)"
-                     (searchEvent)="onSearch($event)">
-  </app-heroes-filters>
+  <app-heroes-filters (attributeEvent)="setAttributes($event)" (searchEvent)="onSearch($event)"></app-heroes-filters>
 
   <ul *ngIf="filteringHeroes$ | async as heroes" class="animate__animated animate__fadeIn heroes-list">
     <li *ngFor="let hero of heroes" (click)="openHero(hero)">
