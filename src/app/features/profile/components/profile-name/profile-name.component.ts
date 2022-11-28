@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
-import { combineLatest, Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
 
 import { profileNameImports } from '../../profile.imports';
 
@@ -35,6 +35,7 @@ export class ProfileNameComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() value!: string;
 
   control!: FormControl<string>;
+  width: number = NaN;
 
   private renderer = inject(Renderer2);
   private cdr = inject(ChangeDetectorRef);
@@ -45,10 +46,13 @@ export class ProfileNameComponent implements OnInit, AfterViewInit, OnDestroy {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(3), Validators.maxLength(30)]
     });
+  }
 
-    combineLatest([this.control.statusChanges, this.control.valueChanges])
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(_ => this.cdr.detectChanges());
+  onInput(): void {
+    setTimeout(() => {
+      this.width = Math.round(this.hintRef.nativeElement.offsetWidth) + 8;
+      this.cdr.detectChanges();
+    }, 0);
   }
 
   onBlur(): void {

@@ -3,6 +3,7 @@
 .profile-name {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 
   &__control {
     position: relative;
@@ -18,7 +19,7 @@
     }
   }
 
-  span {
+  &__hint {
     background-color: transparent;
     color: $white;
     font-size: 20px;
@@ -30,18 +31,34 @@
     z-index: -1;
   }
 
-  input {
+  &__control {
     background-color: transparent;
     border: none;
     color: $white;
     font-size: 20px;
     font-family: $font-default;
     line-height: 1;
-    margin: -2px auto 0;
+    margin: -1px auto 0;
     padding: 0 4px;
     text-align: center;
     min-width: 60px;
     max-width: 350px;
+  }
+
+  &__errors {
+    position: absolute;
+    left: 50px;
+    right: 50px;
+    top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .control-error {
+      color: $white;
+      font-size: 14px;
+      font-family: $font-default;
+    }
   }
 
   .done, .close {

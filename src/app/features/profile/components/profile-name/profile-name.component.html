@@ -1,9 +1,22 @@
 <div class="profile-name">
   <div class="profile-name__control">
-    <input #controlRef type="text"
-           [style.width.px]="hintRef.offsetWidth + 20"
-           [formControl]="control">
-    <span #hintRef>{{ control.value }}</span>
+    <input #controlRef class="profile-name__control" type="text"
+           [style.width.px]="width"
+           [formControl]="control"
+           (input)="onInput()">
+    <span class="profile-name__hint" #hintRef>{{ control.value }}</span>
+  </div>
+
+  <div class="profile-name__errors">
+    <span class="control-error" *ngIf="control.errors?.['required'] && (control.touched || control.dirty)">
+      Field is required
+    </span>
+    <span class="control-error" *ngIf="control.errors?.['minlength'] && (control.touched || control.dirty)">
+      Min length is {{ control.errors?.['minlength'].requiredLength }}
+    </span>
+    <span class="control-error" *ngIf="control.errors?.['maxlength'] && (control.touched || control.dirty)">
+      Max length is {{ control.errors?.['maxlength'].requiredLength }}
+    </span>
   </div>
 
   <mat-icon class="done" (click)="save()" [class.done--disabled]="control.invalid">done</mat-icon>
