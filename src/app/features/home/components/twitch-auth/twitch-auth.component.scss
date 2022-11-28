@@ -3,7 +3,7 @@
 .twitch-form {
   background-color: $twitch-color;
   border-radius: 30px;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: $font-default;
   max-width: 550px;
   margin: auto;
   padding: 24px;
@@ -19,7 +19,7 @@
     }
 
     &::placeholder {
-      font-family: Roboto, "Helvetica Neue", sans-serif;
+      font-family: $font-default;
     }
 
     &.twitch-form__control--error {

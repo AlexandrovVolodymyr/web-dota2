@@ -1,19 +1,18 @@
 $white: #ffffff;
 $black: #000000;
 $green: rgb(7, 239, 156);
-
-$text-color-light: rgba(255, 255, 255, 0.6);
-$text-shadow: #fff 0 0 20px, #fff 0 0 30px;
-$text-shadow-dark: #000 0 0 20px, #000 0 0 30px;
+$purple: #7b1fa2;
 
 $logo-color: rgb(244 68 54);
 $profile-background: #000519;
+$profile-width: 550px;
+$container: 1440px;
 
+$text-color-light: rgba(255, 255, 255, 0.6);
+$text-shadow: $white 0 0 20px, $white 0 0 30px;
+$text-shadow-dark: $black 0 0 20px, $black 0 0 30px;
+$ability-shadow: 0 0 20px $black, 0 0 20px $black;
 $box-shadow-invalid: 0 0 2px 2px $logo-color;
-
-$purple: #7b1fa2;
-
-$ability-shadow: 0 0 20px #000, 0 0 20px #000;
 
 $twitch-color: #9147ff;
 $twitch-color-dark: #772ce8;
@@ -31,5 +30,4 @@ $font: 'Crimson Text Regular', sans-serif;
 $fontBold: 'Crimson Text Bold', sans-serif;
 $fontSemiBold: 'Crimson Text SemiBold', sans-serif;
 $font-secondary: 'Cinzel', serif;
-
-$container: 1440px;
+$font-default: Roboto, "Helvetica Neue", sans-serif;

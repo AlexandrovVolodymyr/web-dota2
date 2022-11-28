@@ -1,0 +1,11 @@
+<div class="profile-name">
+  <div class="profile-name__control">
+    <input #controlRef type="text"
+           [style.width.px]="hintRef.offsetWidth + 20"
+           [formControl]="control">
+    <span #hintRef>{{ control.value }}</span>
+  </div>
+
+  <mat-icon class="done" (click)="save()" [class.done--disabled]="control.invalid">done</mat-icon>
+  <mat-icon class="close" (click)="cancel()">close</mat-icon>
+</div>

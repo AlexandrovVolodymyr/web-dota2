@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import { ProfileModule } from '../profile/profile.module';
-
 import { HeaderComponent } from './layout/header/header.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 import { UserComponent } from '../../shared/user/user.component';
@@ -24,7 +22,6 @@ import { TwitchViewersPipe } from './pipes/twitch-viewers.pipe';
     CommonModule,
     RouterLink,
     RouterLinkActive,
-    ProfileModule,
     UserComponent
   ],
   exports: [

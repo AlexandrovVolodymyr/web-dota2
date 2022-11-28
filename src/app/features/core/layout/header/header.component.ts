@@ -25,8 +25,9 @@ import { User } from '../../interfaces/user.interface';
 })
 export class HeaderComponent implements OnDestroy {
   @ViewChild('profileContainer', { read: ViewContainerRef }) profileContainer!: ViewContainerRef;
-  componentRef: ComponentRef<ProfileComponent> | undefined;
   @Input() user: User | undefined;
+  
+  componentRef: ComponentRef<ProfileComponent> | undefined;
 
   private unsubscribe$ = new Subject<void>();
 
@@ -42,8 +43,6 @@ export class HeaderComponent implements OnDestroy {
     this.profileContainer.clear();
     this.componentRef = this.profileContainer.createComponent(ProfileComponent);
     this.componentRef.instance.profileContainer = this.profileContainer;
-    this.componentRef.instance.user$ = this.userService.user$;
-    // this.componentRef.instance.clearContainer.subscribe(() => this.profileContainer.clear());
   }
 
   logout(): void {

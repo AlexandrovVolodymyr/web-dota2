@@ -1,9 +1,10 @@
 <div class="form registration-form">
-  <app-form-header [title]="'Sign Up'" (closeEvent)="close()"></app-form-header>
+  <app-form-header [title]="'Sign Up'" [isCloseIcon]="false" (closeEvent)="close()"></app-form-header>
 
   <form [formGroup]="registrationForm">
     <div class="form__row registration-form__row">
-      <input type="text" class="form__control registration-form__control" placeholder="Display Name" formControlName="displayName">
+      <input type="text" class="form__control registration-form__control" placeholder="Display Name"
+             formControlName="displayName">
       <span class="form__border registration-form__border" [class.form__border--active]="displayName.value"></span>
     </div>
     <div class="form__row registration-form__row">
@@ -11,7 +12,8 @@
       <span class="form__border registration-form__border" [class.form__border--active]="email.value"></span>
     </div>
     <div class="form__row registration-form__row">
-      <input type="password" class="form__control registration-form__control" placeholder="Password" formControlName="password">
+      <input type="password" class="form__control registration-form__control" placeholder="Password"
+             formControlName="password">
       <span class="form__border registration-form__border" [class.form__border--active]="password.value"></span>
     </div>
     <div class="form__row registration-form__row" *ngIf="!avatar">

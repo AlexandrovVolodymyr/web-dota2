@@ -1,0 +1,79 @@
+@import 'src/assets/styles/variables';
+
+.profile-name {
+  display: flex;
+  justify-content: center;
+
+  &__control {
+    position: relative;
+
+    &:before {
+      background-color: $logo-color;
+      content: '';
+      height: 2px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  span {
+    background-color: transparent;
+    color: $white;
+    font-size: 20px;
+    font-family: $font-default;
+    line-height: 1;
+    position: absolute;
+    white-space: nowrap;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  input {
+    background-color: transparent;
+    border: none;
+    color: $white;
+    font-size: 20px;
+    font-family: $font-default;
+    line-height: 1;
+    margin: -2px auto 0;
+    padding: 0 4px;
+    text-align: center;
+    min-width: 60px;
+    max-width: 350px;
+  }
+
+  .done, .close {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .close {
+    color: $logo-color;
+    right: 0;
+
+    &:hover {
+      color: darken($logo-color, 20%);
+    }
+  }
+
+  .done {
+    color: $green;
+    right: 30px;
+
+    &:hover {
+      color: darken($green, 20%);
+    }
+
+    &--disabled {
+      filter: grayscale(1);
+      pointer-events: none;
+    }
+  }
+}

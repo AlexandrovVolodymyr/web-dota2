@@ -6,10 +6,9 @@
   }
 
   .contacts-form {
-    background: $black url('/assets/img/circles.png') no-repeat right bottom;
+    background: $black url('~src/assets/img/circles.png') no-repeat right bottom;
     max-width: 550px;
     margin: 0;
-    padding-top: 30px;
     @media screen and (max-width: 578px) {
       background-size: 50%;
       min-width: 100%;

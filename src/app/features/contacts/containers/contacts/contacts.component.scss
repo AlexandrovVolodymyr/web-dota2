@@ -22,7 +22,7 @@
     }
 
     .address-part {
-      background: $text-color-light url('/assets/img/letter_send.svg') no-repeat center;
+      background: $text-color-light url('~src/assets/img/letter_send.svg') no-repeat center;
       display: flex;
       flex-direction: column;
       width: 550px;

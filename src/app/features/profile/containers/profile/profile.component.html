@@ -3,18 +3,27 @@
     <div class="profile__icon">
       <mat-icon (click)="closeProfile()">close</mat-icon>
     </div>
-    <div class="profile-info">
+    <form class="profile-info">
       <div class="profile__avatar">
         <div>
           <img [src]="user.photo" [alt]="user.displayName">
         </div>
-        <span class="profile-action">Change avatar</span>
+        <span class="profile-action" (click)="openModal()">Change avatar</span>
       </div>
       <div class="profile__name">
-        <!--        <input type="text">-->
-        <span>{{ user.displayName }}</span>
-        <mat-icon>edit</mat-icon>
+        <ng-container *ngIf="mode === 'on'; else nameTpl">
+          <app-profile-name [displayNameRef]="displayNameRef"
+                            [value]="user.displayName"
+                            (updateNameEvent)="updateName($event)">
+          </app-profile-name>
+        </ng-container>
+        <ng-template #nameTpl>
+          <span class="display-name" #displayNameRef>{{ user.displayName }}</span>
+          <mat-icon class="edit" (click)="changeMode('on')">edit</mat-icon>
+        </ng-template>
       </div>
-    </div>
+    </form>
+
+    <app-loader *ngIf="loading"></app-loader>
   </div>
 </div>
