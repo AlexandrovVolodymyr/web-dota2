@@ -1,12 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { BehaviorSubject, map, Observable, Subject, takeUntil } from 'rxjs';
 
 import { heroes } from '../../heroes.imports';
 import { HeroesService } from '../../services/heroes.service';
+import { UtilsService } from '../../../../services/utils.service';
 import { Hero, HeroAttributes } from '../../../core/interfaces/hero.interface';
 
 @Component({
@@ -26,9 +29,12 @@ import { Hero, HeroAttributes } from '../../../core/interfaces/hero.interface';
 export class HeroesComponent implements OnInit, OnDestroy {
   // this.heroesService.getHeroes().pipe(tap(h => console.log(h)));
   heroes$ = new BehaviorSubject<Hero[]>([]);
-  searchValue$ = new BehaviorSubject<string>('');
+  private searchValue$ = new BehaviorSubject<string>('');
+  searchValueTpl$: Observable<string> = this.searchValue$.asObservable();
   heroAttributes$ = new BehaviorSubject<HeroAttributes[]>([]);
 
+  private matSnackBar = inject(MatSnackBar);
+  private utilsService = inject(UtilsService);
   private unsubscribe$ = new Subject<void>();
 
   constructor(
@@ -56,7 +62,10 @@ export class HeroesComponent implements OnInit, OnDestroy {
     this.afs.collection('/heroes').get()
       // valueChanges().pipe(tap(console.log));
       .pipe(map((snapshot) => <Hero[]>snapshot.docs.map(doc => doc.data())), takeUntil(this.unsubscribe$))
-      .subscribe((heroes: Hero[]) => this.heroes$.next(heroes));
+      .subscribe({
+        next: (heroes: Hero[]) => this.heroes$.next(heroes),
+        error: (err: HttpErrorResponse) => this.matSnackBar.open(err.message, 'Close', this.utilsService.snackBarOptions())
+      });
 
   }
 

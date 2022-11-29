@@ -27,7 +27,7 @@
     &__values {
       img {
         cursor: pointer;
-        filter: grayscale(100%);
+        filter: brightness(0);
         margin-left: 10px;
         @media screen and (max-width: 660px) {
           max-width: 30px;

@@ -9,9 +9,16 @@
 
   <app-heroes-filters (attributeEvent)="setAttributes($event)" (searchEvent)="onSearch($event)"></app-heroes-filters>
 
-  <ul *ngIf="filteringHeroes$ | async as heroes" class="animate__animated animate__fadeIn heroes-list">
-    <li *ngFor="let hero of heroes" (click)="openHero(hero)">
-      <app-hero [hero]="hero"></app-hero>
-    </li>
-  </ul>
+  <ng-container *ngIf="filteringHeroes$ | async as heroes">
+    <ul class="animate__animated animate__fadeIn heroes-list"
+        *ngIf="heroes.length else loader;">
+      <li *ngFor="let hero of heroes" (click)="openHero(hero)">
+        <app-hero [hero]="hero"></app-hero>
+      </li>
+    </ul>
+
+    <ng-template #loader>
+      <app-loader *ngIf="(searchValueTpl$ | async) === ''"></app-loader>
+    </ng-template>
+  </ng-container>
 </div>
