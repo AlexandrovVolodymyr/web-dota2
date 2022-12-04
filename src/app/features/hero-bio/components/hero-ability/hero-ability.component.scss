@@ -1,0 +1,50 @@
+@import 'src/assets/styles/variables';
+
+.ability-icon {
+  display: flex;
+  width: 80px;
+  height: 80px;
+  box-shadow: $ability-shadow;
+
+  img {
+    border-radius: 1px;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.ability-details {
+  background: $ability-gradient;
+  border-radius: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 550px;
+  padding: 10px;
+  z-index: 1;
+
+  &__name {
+    color: $logo-color;
+    font-family: $font-secondary;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  &__description {
+    color: $white;
+    font-family: $font;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  &__lore {
+    background-color: $black;
+    color: $text-color-light;
+    font-family: $fontItalic;
+    font-size: 17px;
+    padding: 10px;
+  }
+}

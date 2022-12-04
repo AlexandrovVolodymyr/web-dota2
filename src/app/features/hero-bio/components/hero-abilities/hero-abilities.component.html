@@ -1,7 +1,5 @@
 <ul class="abilities">
   <li *ngFor="let ability of abilities">
-    <div class="ability-icon" (click)="show()">
-      <img [src]="ability.icon" [alt]="ability.name_loc">
-    </div>
+    <app-hero-ability [ability]="ability"></app-hero-ability>
   </li>
 </ul>

@@ -10,10 +10,21 @@
   z-index: 2;
 
   &__left, &__right {
-    cursor: pointer;
-
     button {
       background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &.disabled {
+        background-color: rgba(255, 255, 255, 0.12);
+        cursor: not-allowed;
+
+        mat-icon {
+          color: $text-color-light;
+          cursor: not-allowed;
+        }
+      }
     }
   }
 }

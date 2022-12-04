@@ -1,107 +1,117 @@
 @import 'src/assets/styles/variables';
 
-.profile {
-  background-color: $profile-background;
-  background-image: url('~src/assets/img/main7.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  box-shadow: -4px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  font-family: $font-default;
-  height: 100%;
-  min-width: $profile-width;
-  padding: 2rem 1rem 50px;
-  position: relative;
+:host {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 101;
 
-  &-overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: flex-end;
-    z-index: 100;
-  }
-
-  app-loader {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
-
-  &__icon {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  &-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-  }
-
-  &-action {
-    color: $white;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 15px;
-    transition: color 0.3s ease-in-out;
-
-    &:hover {
-      color: $logo-color;
-    }
-  }
-
-  &__avatar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    div {
-      border: 3px solid $white;
-      border-radius: 50%;
-      width: 120px;
-      height: 120px;
-      overflow: hidden;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  &__name {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
+  .profile {
+    background: $profile-background url('~src/assets/img/main7.jpg') no-repeat center;
+    background-size: cover;
+    box-shadow: -4px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    font-family: $font-default;
+    height: 100%;
+    min-width: $profile-width;
+    margin-left: auto;
+    padding: 2rem 1rem 50px;
     position: relative;
-    width: 100%;
+    z-index: 102;
 
-    .display-name {
-      color: $white;
-      font-family: $font-default;
-      font-size: 20px;
+    &-overlay {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: flex-end;
+      z-index: 100;
+      background-color: rgba(255, 255, 255, 0.25);
     }
 
-    mat-icon {
-      font-size: 20px;
-      width: 20px;
-      height: 20px;
-      line-height: 20px;
+    app-loader {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
 
-      &.edit {
-        right: 0;
+    &__icon {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    &-action {
+      color: $white;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 15px;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: $logo-color;
+      }
+    }
+
+    &__avatar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      div {
+        border: 3px solid $white;
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        overflow: hidden;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      position: relative;
+      width: 100%;
+
+      .display-name {
+        color: $white;
+        font-family: $font-default;
+        font-size: 20px;
+      }
+
+      mat-icon {
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &.edit {
+          right: 0;
+        }
       }
     }
   }
 }
+
+

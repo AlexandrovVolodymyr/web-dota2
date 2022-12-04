@@ -4,22 +4,10 @@
   margin-left: -10px;
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 
   li {
+    cursor: pointer;
     padding: 10px;
-
-    .ability-icon {
-      display: flex;
-      width: 80px;
-      height: 80px;
-      box-shadow: $ability-shadow;
-
-      img {
-        border-radius: 1px;
-        cursor: pointer;
-        width: 80px;
-        height: 80px;
-      }
-    }
   }
 }

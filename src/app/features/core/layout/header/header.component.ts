@@ -1,33 +1,38 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ComponentRef,
   Input,
   OnDestroy,
-  ViewChild,
-  ViewContainerRef
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 
 import { AuthService } from '../../../auth/services/auth.service';
 import { UserService } from '../../../../services/user.service';
 import { TwitchService } from '../../../../services/twitch.service';
-import { ProfileComponent } from '../../../profile/containers/profile/profile.component';
+import { LayoutService } from '../../../../services/layout.service';
 import { User } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('toggleProfile', [
+      state('void', style({ opacity: '0', transform: 'translateX(100%)' })),
+      transition(':enter, :leave', [
+        animate('0.3s')
+      ])
+    ]),
+  ]
 })
 export class HeaderComponent implements OnDestroy {
-  @ViewChild('profileContainer', { read: ViewContainerRef }) profileContainer!: ViewContainerRef;
   @Input() user: User | undefined;
-  
-  componentRef: ComponentRef<ProfileComponent> | undefined;
+
+  profile$: Observable<'on' | 'off'> = this.layoutService.profile$;
 
   private unsubscribe$ = new Subject<void>();
 
@@ -36,13 +41,12 @@ export class HeaderComponent implements OnDestroy {
     private userService: UserService,
     private twitchService: TwitchService,
     private router: Router,
+    private layoutService: LayoutService
   ) {
   }
 
   openProfileBar(): void {
-    this.profileContainer.clear();
-    this.componentRef = this.profileContainer.createComponent(ProfileComponent);
-    this.componentRef.instance.profileContainer = this.profileContainer;
+    this.layoutService.setProfileMode('on');
   }
 
   logout(): void {

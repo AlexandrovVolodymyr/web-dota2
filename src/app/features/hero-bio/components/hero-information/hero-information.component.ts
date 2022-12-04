@@ -1,8 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject, Input, } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, Component, Input, } from '@angular/core';
 
 import { heroImports } from '../../hero-bio.imports';
-import { DialogComponent } from '../../../../shared/dialog/dialog.component';
 import { Attributes } from '../../../core/enums/attributes';
 import { HeroFullInformation } from '../../../core/interfaces/hero-full-information';
 
@@ -19,12 +17,6 @@ export class HeroInformationComponent {
 
   HeroAttributes = Attributes;
   isFullHistory = false;
-
-  private dialog = inject(MatDialog);
-
-  showAbility(): void {
-    this.dialog.open(DialogComponent);
-  }
 
   showFullHistory(): void {
     this.isFullHistory = true;

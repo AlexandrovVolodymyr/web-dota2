@@ -1,6 +1,6 @@
 <div class="hero-slider">
   <div class="hero-slider__left" (click)="prev()">
-    <button mat-mini-fab color="primary" aria-label="Previous hero">
+    <button mat-mini-fab color="primary" aria-label="Previous hero" [class.disabled]="!hasPrev" [disabled]="!hasPrev">
       <mat-icon>chevron_left</mat-icon>
     </button>
   </div>

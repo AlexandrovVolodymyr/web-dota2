@@ -3,20 +3,18 @@ import {
   Component,
   ElementRef,
   inject,
-  Input,
   ViewChild,
-  ViewContainerRef
 } from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatDialog } from '@angular/material/dialog';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 import { Observable } from 'rxjs';
 
 import { profileImports } from '../../profile.imports';
-import { DialogComponent } from '../../../../shared/dialog/dialog.component';
 import { UserService } from '../../../../services/user.service';
+import { LayoutService } from '../../../../services/layout.service';
+import { DialogComponent } from '../../../../shared/dialog/dialog.component';
 import { User } from '../../../core/interfaces/user.interface';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 // void - not part of the dom: created -> DOM, DOM -> removed from the DOM
 // * (default) -
@@ -30,19 +28,10 @@ export type ProfileMode = 'on' | 'off';
   styleUrls: ['./profile.component.scss'],
   standalone: true,
   imports: profileImports,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [
-    trigger('toggleBar', [
-      state('void', style({ opacity: '0', transform: 'translateX(100%)' })),
-      transition(':enter, :leave', [
-        animate('0.3s')
-      ])
-    ])
-  ]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileComponent {
   @ViewChild('displayNameRef', { read: ElementRef }) displayNameRef!: ElementRef;
-  @Input() profileContainer!: ViewContainerRef;
 
   user$: Observable<User | null> = inject(UserService).user$;
   mode: ProfileMode = 'off';
@@ -50,14 +39,11 @@ export class ProfileComponent {
 
   private modalRef = inject(MatDialog);
   private userService = inject(UserService);
-
-  // private afs = inject(AngularFirestore);
-
-  constructor(private afs: AngularFirestore) {
-  }
+  private layoutService = inject(LayoutService);
+  private afs = inject(AngularFirestore);
 
   closeProfile(): void {
-    this.profileContainer.clear();
+    this.layoutService.setProfileMode('off');
   }
 
   openModal(): void {

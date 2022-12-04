@@ -1,7 +1,7 @@
 @import 'src/assets/styles/variables';
 
 :host {
-  background: linear-gradient(80deg, #252728 0%, #101415 100%);
+  background: $ability-gradient;
   box-shadow: 0 0 8px $black;
   display: flex;
   justify-content: space-between;

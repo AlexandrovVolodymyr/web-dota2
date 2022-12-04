@@ -21,7 +21,10 @@
           <div class="hero-excerpt" [innerHTML]="hero.npe_desc_loc"></div>
           <div class="wrapper-description" [class.wrapper-description--hide]="isFullHistory">
             <div class="hero-description" [innerHTML]="hero.hype_loc"></div>
-            <button mat-stroked-button class="hero-history-toggle" (click)="showFullHistory()">Show full history</button>
+            <button mat-stroked-button class="hero-history-toggle"
+                    (click)="showFullHistory()">
+              Show full history
+            </button>
           </div>
           <div class="hero-full-description" *ngIf="isFullHistory">
             <div>{{ hero.bio_loc }}</div>
@@ -32,7 +35,7 @@
         <div class="hero-abilities-container">
           <div class="hero-abilities">
             <div class="hero-abilities__title">Abilities</div>
-            <app-hero-abilities [abilities]="hero.abilities" (showEvent)="showAbility()"></app-hero-abilities>
+            <app-hero-abilities [abilities]="hero.abilities"></app-hero-abilities>
           </div>
 
           <div class="hero-talents">

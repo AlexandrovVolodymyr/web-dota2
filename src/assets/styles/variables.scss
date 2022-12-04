@@ -13,6 +13,7 @@ $text-shadow: $white 0 0 20px, $white 0 0 30px;
 $text-shadow-dark: $black 0 0 20px, $black 0 0 30px;
 $ability-shadow: 0 0 20px $black, 0 0 20px $black;
 $box-shadow-invalid: 0 0 2px 2px $logo-color;
+$ability-gradient: linear-gradient(80deg, #252728 0%, #101415 100%);
 
 $twitch-color: #9147ff;
 $twitch-color-dark: #772ce8;
@@ -29,5 +30,6 @@ $twitch-overlay: rgba(0, 0, 0, 0.6);
 $font: 'Crimson Text Regular', sans-serif;
 $fontBold: 'Crimson Text Bold', sans-serif;
 $fontSemiBold: 'Crimson Text SemiBold', sans-serif;
+$fontItalic: 'Crimson Text Italic', sans-serif;
 $font-secondary: 'Cinzel', serif;
 $font-default: Roboto, "Helvetica Neue", sans-serif;

@@ -19,12 +19,13 @@
   src: local('Crimson Text Bold'), url('../fonts/CrimsonText-Bold.ttf');
 }
 
-//@font-face {
-//  font-family: 'Crimson Text Italic';
-//  font-style: normal;
-//  font-weight: normal;
-//  src: local('Crimson Text Italic'), url('assets/styles/fonts/CrimsonText-Italic.woff') format('woff');
-//}
+@font-face {
+  font-family: 'Crimson Text Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Crimson Text Italic'), url('../fonts/CrimsonText-Italic.ttf') format('woff');
+}
+
 //
 //
 

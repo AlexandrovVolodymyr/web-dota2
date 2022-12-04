@@ -1,29 +1,27 @@
-<div class="profile-overlay" *ngIf="user$ | async as user">
-  <div class="profile" @toggleBar>
-    <div class="profile__icon">
-      <mat-icon (click)="closeProfile()">close</mat-icon>
-    </div>
-    <form class="profile-info">
-      <div class="profile__avatar">
-        <div>
-          <img [src]="user.photo" [alt]="user.displayName">
-        </div>
-        <span class="profile-action" (click)="openModal()">Change avatar</span>
-      </div>
-      <div class="profile__name">
-        <ng-container *ngIf="mode === 'on'; else nameTpl">
-          <app-profile-name [displayNameRef]="displayNameRef"
-                            [value]="user.displayName"
-                            (updateNameEvent)="updateName($event)">
-          </app-profile-name>
-        </ng-container>
-        <ng-template #nameTpl>
-          <span class="display-name" #displayNameRef>{{ user.displayName }}</span>
-          <mat-icon class="edit" (click)="changeMode('on')">edit</mat-icon>
-        </ng-template>
-      </div>
-    </form>
-
-    <app-loader *ngIf="loading"></app-loader>
+<div class="profile" *ngIf="user$ | async as user">
+  <div class="profile__icon">
+    <mat-icon (click)="closeProfile()">close</mat-icon>
   </div>
+  <form class="profile-info">
+    <div class="profile__avatar">
+      <div>
+        <img [src]="user.photo" [alt]="user.displayName">
+      </div>
+      <span class="profile-action" (click)="openModal()">Change avatar</span>
+    </div>
+    <div class="profile__name">
+      <ng-container *ngIf="mode === 'on'; else nameTpl">
+        <app-profile-name [displayNameRef]="displayNameRef"
+                         [value]="user.displayName"
+                         (updateNameEvent)="updateName($event)">
+        </app-profile-name>
+      </ng-container>
+      <ng-template #nameTpl>
+        <span class="display-name" #displayNameRef>{{ user.displayName }}</span>
+        <mat-icon class="edit" (click)="changeMode('on')">edit</mat-icon>
+      </ng-template>
+    </div>
+  </form>
+
+  <app-loader *ngIf="loading"></app-loader>
 </div>

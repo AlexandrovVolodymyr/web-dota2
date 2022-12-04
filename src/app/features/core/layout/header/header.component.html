@@ -5,6 +5,6 @@
             (logoutEvent)="logout()"
             (openProfileEvent)="openProfileBar()">
   </app-user>
-</header>
 
-<ng-template #profileContainer></ng-template>
+  <app-profile @toggleProfile *ngIf="(profile$ | async) === 'on'"></app-profile>
+</header>

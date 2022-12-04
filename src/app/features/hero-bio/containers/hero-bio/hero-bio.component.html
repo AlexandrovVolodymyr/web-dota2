@@ -1,7 +1,10 @@
-<div class="hero-page" *ngIf="hero$ | async as hero">
+<div class="hero-page"
+     *ngIf="hero$ | async as hero">
   <div class="hero-page-container">
     <app-hero-slider (prevEvent)="prev(hero)"
-                     (nextEvent)="next(hero)">
+                     (nextEvent)="next(hero)"
+                     [hero]="hero"
+                     [heroes]="heroes">
     </app-hero-slider>
     <app-hero-information [hero]="hero"></app-hero-information>
     <app-hero-stats [hero]="hero"></app-hero-stats>

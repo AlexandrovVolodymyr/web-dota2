@@ -1,0 +1,15 @@
+<div class="ability-icon"
+     (mouseenter)="isDetails = true"
+     (mouseleave)="isDetails = false">
+  <img [src]="ability.icon" [alt]="ability.name_loc">
+
+  <div class="ability-details"
+       @fadeSlideInOut
+       *ngIf="isDetails">
+    <div class="ability-details__name">{{ability.name_loc }}</div>
+    <div class="ability-details__description" [innerHTML]="ability.desc_loc"></div>
+    <div class="ability-details__lore" *ngIf="ability.lore_loc">{{ ability.lore_loc }}</div>
+  </div>
+</div>
+
+

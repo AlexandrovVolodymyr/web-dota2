@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -21,6 +21,10 @@ import { Hero } from '../../../core/interfaces/hero.interface';
 })
 
 export class HeroBioComponent implements OnInit, OnDestroy {
+  heroes: Hero[] | undefined;
+  private activatedRoute = inject(ActivatedRoute);
+  private afs = inject(AngularFirestore);
+
   hero$: Observable<HeroFullInformation | undefined> = this.activatedRoute.params
     .pipe(
       map(({ name }: Params) => name),
@@ -32,18 +36,11 @@ export class HeroBioComponent implements OnInit, OnDestroy {
       }),
       map(({ name, heroes }) => heroes.find((item: HeroFullInformation) => item.name_loc.toLowerCase() === name)),
     );
-  heroes: Hero[] | undefined;
 
+  private router = inject(Router);
+  private matSnackBar = inject(MatSnackBar);
+  private utilsService = inject(UtilsService);
   private unsubscribe$ = new Subject<void>();
-
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private afs: AngularFirestore,
-    private router: Router,
-    private matSnackBar: MatSnackBar,
-    private utilsService: UtilsService
-  ) {
-  }
 
   ngOnInit(): void {
     this.afs.collection('/heroes').get()
@@ -59,7 +56,9 @@ export class HeroBioComponent implements OnInit, OnDestroy {
 
   prev(hero: HeroFullInformation): void {
     const prev = this.heroes!.find(item => hero.id === item.id + 1);
-    this.router.navigate(['hero', prev!.name_loc.toLowerCase()]);
+    if (prev) {
+      this.router.navigate(['hero', prev!.name_loc.toLowerCase()]);
+    }
   }
 
   next(hero: HeroFullInformation): void {

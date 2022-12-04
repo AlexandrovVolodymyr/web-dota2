@@ -5,6 +5,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { HeaderComponent } from './layout/header/header.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 import { UserComponent } from '../../shared/user/user.component';
+import { ProfileComponent } from '../profile/containers/profile/profile.component';
 
 import { NumberRoundPipe } from './pipes/number-round.pipe';
 import { ImgSplitPipe } from './pipes/img-split.pipe';
@@ -16,19 +17,20 @@ import { TwitchViewersPipe } from './pipes/twitch-viewers.pipe';
     NavigationComponent,
     NumberRoundPipe,
     ImgSplitPipe,
-    TwitchViewersPipe
+    TwitchViewersPipe,
   ],
   imports: [
     CommonModule,
     RouterLink,
     RouterLinkActive,
-    UserComponent
+    UserComponent,
+    ProfileComponent
   ],
   exports: [
     HeaderComponent,
     NumberRoundPipe,
     ImgSplitPipe,
-    TwitchViewersPipe
+    TwitchViewersPipe,
   ]
 })
 export class CoreModule {
