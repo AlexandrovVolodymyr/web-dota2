@@ -33,8 +33,15 @@
     }
 
     span {
-      line-height: 1;
-      margin-left: 10px;
+      &:first-child {
+        display: flex;
+        margin-left: 0;
+      }
+
+      &:last-child {
+        line-height: 1;
+        margin-left: 10px;
+      }
     }
   }
 

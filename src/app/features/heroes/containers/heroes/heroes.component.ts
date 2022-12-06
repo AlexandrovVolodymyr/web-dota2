@@ -66,7 +66,6 @@ export class HeroesComponent implements OnInit, OnDestroy {
         next: (heroes: Hero[]) => this.heroes$.next(heroes),
         error: (err: HttpErrorResponse) => this.matSnackBar.open(err.message, 'Close', this.utilsService.snackBarOptions())
       });
-
   }
 
   onSearch(value: string): void {

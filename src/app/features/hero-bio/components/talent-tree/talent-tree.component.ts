@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+
+import { UtilsService } from '../../../../services/utils.service';
+import { SVG } from '../../../core/constant/svgs';
 
 @Component({
   selector: 'app-talent-tree',
@@ -8,4 +11,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TalentTreeComponent {
+  private utilsService = inject(UtilsService);
+  talentsTree = this.utilsService.getSVG(SVG.talentsTree);
 }

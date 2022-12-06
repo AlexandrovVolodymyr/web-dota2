@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+
+import { UtilsService } from '../../../../services/utils.service';
+import { SVG } from '../../constant/svgs';
 
 @Component({
   selector: 'app-navigation',
@@ -7,4 +10,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationComponent {
+  private utilsService = inject(UtilsService);
+  logo = this.utilsService.getSVG(SVG.logo);
 }

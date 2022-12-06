@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { twitchAuthImports } from '../../home.imports';
 import { TwitchCredentials, TwitchForm } from '../../../core/interfaces/twitch.interface';
+import { UtilsService } from '../../../../services/utils.service';
+import { SVG } from '../../../core/constant/svgs';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
@@ -15,6 +17,9 @@ import { environment } from '../../../../../environments/environment';
 })
 export class TwitchAuthComponent {
   @Output() submitEvent = new EventEmitter<TwitchCredentials>();
+
+  private utilsService = inject(UtilsService);
+  twitchLogo = this.utilsService.getSVG(SVG.twitchLogo);
 
   twitchForm: FormGroup = new FormGroup<TwitchForm>({
     clientId: new FormControl(environment.twitchConfig.clientId, {
