@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { map, Observable, Subject, switchMap, takeUntil } from 'rxjs';
+import { map, Observable, Subject, switchMap, takeUntil, tap } from 'rxjs';
 
 import { heroBioImports } from '../../hero-bio.imports';
 import { UtilsService } from '../../../../services/utils.service';
@@ -36,16 +36,20 @@ export class HeroBioComponent implements OnInit, OnDestroy {
       }),
       map(({ name, heroes }) => heroes.find((item: HeroFullInformation) => item.name_loc.toLowerCase() === name)),
     );
+  loading = false;
 
   private router = inject(Router);
   private matSnackBar = inject(MatSnackBar);
   private utilsService = inject(UtilsService);
+  private cdr = inject(ChangeDetectorRef);
   private unsubscribe$ = new Subject<void>();
 
   ngOnInit(): void {
     this.afs.collection('/heroes').get()
       .pipe(
         map((snapshot) => <Hero[]>snapshot.docs.map(doc => doc.data())),
+        map((heroes: Hero[]) => heroes.sort((a, b) => a.id - b.id)),
+        tap((heroes) => heroes.forEach(h => console.log(h.name, h.id))),
         takeUntil(this.unsubscribe$)
       )
       .subscribe({
@@ -55,15 +59,19 @@ export class HeroBioComponent implements OnInit, OnDestroy {
   }
 
   prev(hero: HeroFullInformation): void {
+    this.loading = true;
     const prev = this.heroes!.find(item => hero.id === item.id + 1);
     if (prev) {
-      this.router.navigate(['hero', prev!.name_loc.toLowerCase()]);
+      this.router.navigate(['hero', prev!.name_loc.toLowerCase()]).then(() => this.loading = false);
     }
+    this.cdr.detectChanges();
   }
 
   next(hero: HeroFullInformation): void {
+    this.loading = true;
     const next = this.heroes!.find(item => hero.id === item.id - 1);
-    this.router.navigate(['hero', next!.name_loc.toLowerCase()]);
+    this.router.navigate(['hero', next!.name_loc.toLowerCase()]).then(() => this.loading = false);
+    this.cdr.detectChanges();
   }
 
   ngOnDestroy(): void {

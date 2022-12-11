@@ -1,6 +1,8 @@
 <div class="hero-page"
      *ngIf="hero$ | async as hero">
   <div class="hero-page-container">
+    <app-loader *ngIf="loading"></app-loader>
+
     <app-hero-slider (prevEvent)="prev(hero)"
                      (nextEvent)="next(hero)"
                      [hero]="hero"

@@ -1,6 +1,6 @@
 <div class="hero-information">
   <div class="container">
-    <div class="hero-information__left">
+    <div class="animate__animated animate__fadeIn hero-information__left">
       <div class="wrapper">
         <div class="hero-attribute" [ngSwitch]="hero.primary_attr">
           <ng-container *ngSwitchCase="HeroAttributes.STRENGTH">
@@ -44,7 +44,7 @@
         </div>
       </div>
     </div>
-    <div class="hero-information__right">
+    <div class="animate__animated animate__fadeIn hero-information__right">
       <div class="wrapper">
         <div class="hero-video">
           <video [autoplay]="true" [loop]="true" [muted]="true" [src]="hero.video"></video>
