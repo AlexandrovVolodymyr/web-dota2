@@ -7,13 +7,14 @@
   }
 
   &__left {
-    flex: 0 0 810px;
-    max-width: 810px;
+    flex: 0 0 820px;
+    max-width: 820px;
     display: flex;
     padding: 88px 1rem 1rem 88px;
   }
 
   &__right {
+    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;

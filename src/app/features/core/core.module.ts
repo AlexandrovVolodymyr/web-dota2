@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 import { HeaderComponent } from './layout/header/header.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
@@ -22,6 +23,7 @@ import { TwitchViewersPipe } from './pipes/twitch-viewers.pipe';
   imports: [
     CommonModule,
     RouterLink,
+    MatIconModule,
     RouterLinkActive,
     UserComponent,
     ProfileComponent

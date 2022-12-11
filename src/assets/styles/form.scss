@@ -26,7 +26,8 @@
     margin-bottom: 30px;
     text-shadow: $text-shadow;
 
-    svg {
+    mat-icon {
+      cursor: default;
       width: 30px;
       height: 30px;
       transform: translateY(2.5px);

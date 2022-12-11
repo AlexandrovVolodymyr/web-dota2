@@ -9,9 +9,9 @@ import { HeroInformationComponent } from './components/hero-information/hero-inf
 import { HeroStatsComponent } from './components/hero-stats/hero-stats.component';
 import { HeroAbilitiesComponent } from './components/hero-abilities/hero-abilities.component';
 import { HeroSliderComponent } from './components/hero-slider/hero-slider.component';
-import { TalentTreeComponent } from './components/talent-tree/talent-tree.component';
+import { TalentsTreeComponent } from './components/talents-tree/talents-tree.component';
 
 export const heroBioImports = [HeroInformationComponent, HeroStatsComponent, HeroSliderComponent, HeroSliderComponent, CommonModule, MatSnackBarModule, MatDialogModule];
-export const heroImports = [NgSwitch, NgSwitchCase, NgIf, HeroAbilitiesComponent, MatButtonModule, TalentTreeComponent];
+export const heroImports = [NgSwitch, NgSwitchCase, NgIf, HeroAbilitiesComponent, MatButtonModule, TalentsTreeComponent];
 export const heroStatsImports = [CoreModule, NgIf, AsyncPipe, NgForOf];
 

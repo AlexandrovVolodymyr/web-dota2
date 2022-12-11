@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,9 +11,17 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './features/core/core.module';
 
-import { AppComponent } from './app.component';
+import { Observable } from 'rxjs';
 
+import { AppComponent } from './app.component';
+import { AppInitService } from './services/app-init.service';
 import { environment } from '../environments/environment';
+
+export function initializeApp(initService: AppInitService) {
+  return (): Observable<any> => {
+    return initService.init();
+  };
+}
 
 @NgModule({
   declarations: [
@@ -30,6 +38,9 @@ import { environment } from '../environments/environment';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     CoreModule
+  ],
+  providers: [
+    { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppInitService], multi: true }
   ],
   bootstrap: [AppComponent]
 })

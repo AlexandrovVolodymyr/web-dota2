@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TalentTreeComponent } from './talent-tree.component';
+import { TalentsTreeComponent } from './talents-tree.component';
 
-describe('TalentTreeComponent', () => {
-  let component: TalentTreeComponent;
-  let fixture: ComponentFixture<TalentTreeComponent>;
+describe('TalentsTreeComponent', () => {
+  let component: TalentsTreeComponent;
+  let fixture: ComponentFixture<TalentsTreeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TalentTreeComponent]
+      declarations: [TalentsTreeComponent]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(TalentTreeComponent);
+    fixture = TestBed.createComponent(TalentsTreeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
