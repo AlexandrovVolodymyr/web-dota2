@@ -25,9 +25,8 @@ export class HeroSliderComponent {
   @Input() hero!: HeroFullInformation;
   @Input() heroes: Hero[] | undefined;
 
-  get hasPrev(): boolean {
-    const prev = this.heroes!.find(item => this.hero?.id === item.id + 1);
-    return !!prev;
+  get prevDisabled(): boolean {
+    return (this.hero.id === 1);
   }
 
   prev(): void {
