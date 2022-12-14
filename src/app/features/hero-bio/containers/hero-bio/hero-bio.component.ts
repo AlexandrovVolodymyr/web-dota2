@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { map, Observable, Subject, switchMap, takeUntil, tap } from 'rxjs';
+import { map, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 
 import { heroBioImports } from '../../hero-bio.imports';
 import { UtilsService } from '../../../../services/utils.service';
@@ -49,7 +49,6 @@ export class HeroBioComponent implements OnInit, OnDestroy {
       .pipe(
         map((snapshot) => <Hero[]>snapshot.docs.map(doc => doc.data())),
         map((heroes: Hero[]) => heroes.sort((a, b) => a.id - b.id)),
-        tap((heroes) => heroes.forEach(h => console.log(h.name, h.id))),
         takeUntil(this.unsubscribe$)
       )
       .subscribe({
@@ -59,18 +58,20 @@ export class HeroBioComponent implements OnInit, OnDestroy {
   }
 
   prev(hero: HeroFullInformation): void {
-    this.loading = true;
-    const prev = this.heroes!.find(item => hero.id === item.id + 1);
-    if (prev) {
-      this.router.navigate(['hero', prev!.name_loc.toLowerCase()]).then(() => this.loading = false);
-    }
-    this.cdr.detectChanges();
+    this.findClosestHero(hero, 'prev');
   }
 
   next(hero: HeroFullInformation): void {
+    this.findClosestHero(hero, 'next');
+  }
+
+  private findClosestHero(hero: HeroFullInformation, turn: 'prev' | 'next'): void {
     this.loading = true;
-    const next = this.heroes!.find(item => hero.id === item.id - 1);
-    this.router.navigate(['hero', next!.name_loc.toLowerCase()]).then(() => this.loading = false);
+    const heroesID = this.heroes!.map((hero: Hero) => hero.id).filter((id: number) => id !== hero.id);
+    const closestHeroId = turn === 'prev' ? Math.max(...heroesID.filter((num: number) => num <= hero.id)) : Math.min(...heroesID.filter((num: number) => num >= hero.id));
+    const closestHero = this.heroes![closestHeroId - 1];
+
+    this.router.navigate(['hero', closestHero.name_loc.toLowerCase()]).then(() => this.loading = false);
     this.cdr.detectChanges();
   }
 
