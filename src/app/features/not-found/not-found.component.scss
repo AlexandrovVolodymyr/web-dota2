@@ -14,22 +14,55 @@
     padding: 20px;
     text-align: center;
 
+    &-in {
+      @media screen and (max-width: 1200px) {
+        margin-top: 10%;
+      }
+    }
+
     &__404 {
       color: $white;
       font-size: 150px;
       line-height: 200px;
+      @media screen and (max-width: 991px) {
+        font-size: 120px;
+        line-height: 130px;
+      }
+      @media screen and (max-width: 414px) {
+        margin-top: 10%;
+      }
     }
 
     &__text {
       color: $text-color-light;
       font-size: 60px;
       line-height: 80px;
+      @media screen and (max-width: 991px) {
+        font-size: 45px;
+        line-height: 60px;
+      }
+      @media screen and (max-width: 767px) {
+        font-size: 30px;
+        line-height: 35px;
+        margin-top: 10px;
+      }
+      @media screen and (max-width: 412px) {
+        font-size: 24px;
+        line-height: 27px;
+      }
+      @media screen and (max-width: 340px) {
+        font-size: 22px;
+        line-height: 24px;
+      }
     }
 
     &__action {
       font-family: $font-secondary;
       font-weight: 600;
-      margin-top: 30px;
+      margin-top: 20%;
+      @media screen and (max-width: 767px) {
+        margin-top: 20%;
+      }
     }
   }
 }
