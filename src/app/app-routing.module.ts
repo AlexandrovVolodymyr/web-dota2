@@ -28,12 +28,17 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'not-found',
+    loadComponent: () => import('./features/not-found/not-found.component').then(c => c.NotFoundComponent),
+    canActivate: [AuthGuard],
+  },
+  {
     path: '',
     loadComponent: () => import('./features/auth/containers/auth/auth.component').then(c => c.AuthComponent),
     canActivate: [UnauthorizedOnlyGuard]
   },
   { path: 'home', redirectTo: '/', pathMatch: 'full' },
-  { path: '**', redirectTo: '/', pathMatch: 'full' }
+  { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
 ];
 
 @NgModule({

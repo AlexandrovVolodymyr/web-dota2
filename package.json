@@ -11,7 +11,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "lint-fix": "ng lint --fix"
   },
   "private": true,
   "dependencies": {
@@ -45,6 +46,7 @@
     "@typescript-eslint/parser": "5.43.0",
     "animate.css": "^4.1.1",
     "eslint": "^8.27.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "firebase": "^9.13.0",
     "husky": "^8.0.2",
     "jasmine-core": "~4.3.0",

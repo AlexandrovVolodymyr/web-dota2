@@ -1,0 +1,35 @@
+@import 'src/assets/styles/variables';
+
+:host {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+
+  .not-found {
+    font-family: $font-secondary;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+
+    &__404 {
+      color: $white;
+      font-size: 150px;
+      line-height: 200px;
+    }
+
+    &__text {
+      color: $text-color-light;
+      font-size: 60px;
+      line-height: 80px;
+    }
+
+    &__action {
+      font-family: $font-secondary;
+      font-weight: 600;
+      margin-top: 30px;
+    }
+  }
+}

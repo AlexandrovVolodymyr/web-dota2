@@ -1,13 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
-import { Observable, Subject } from 'rxjs';
-
 import { User } from '../../features/core/interfaces/user.interface';
-
-interface DialogData {
-  user$: Observable<User>;
-}
 
 @Component({
   selector: 'app-dialog',
@@ -17,7 +11,6 @@ interface DialogData {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DialogComponent {
-
   user: User = JSON.parse(localStorage.getItem('user')!);
 
   constructor(
