@@ -58,22 +58,38 @@ export class HeroBioComponent implements OnInit, OnDestroy {
   }
 
   prev(hero: HeroFullInformation): void {
-    this.findClosestHero(hero, 'prev');
+    this.loading = true;
+    const prev = this.heroes!.find(item => hero.id === item.id + 1);
+    if (prev) {
+      this.router.navigate(['hero', prev!.name_loc.toLowerCase()]).then(() => this.loading = false);
+    }
+    this.cdr.detectChanges();
   }
 
   next(hero: HeroFullInformation): void {
-    this.findClosestHero(hero, 'next');
-  }
-
-  private findClosestHero(hero: HeroFullInformation, turn: 'prev' | 'next'): void {
     this.loading = true;
-    const heroesID = this.heroes!.map((hero: Hero) => hero.id).filter((id: number) => id !== hero.id);
-    const closestHeroId = turn === 'prev' ? Math.max(...heroesID.filter((num: number) => num <= hero.id)) : Math.min(...heroesID.filter((num: number) => num >= hero.id));
-    const closestHero = this.heroes![closestHeroId - 1];
-
-    this.router.navigate(['hero', closestHero.name_loc.toLowerCase()]).then(() => this.loading = false);
+    const next = this.heroes!.find(item => hero.id === item.id - 1);
+    this.router.navigate(['hero', next!.name_loc.toLowerCase()]).then(() => this.loading = false);
     this.cdr.detectChanges();
   }
+
+  // prev(hero: HeroFullInformation): void {
+  //   this.findClosestHero(hero, 'prev');
+  // }
+  //
+  // next(hero: HeroFullInformation): void {
+  //   this.findClosestHero(hero, 'next');
+  // }
+  //
+  // private findClosestHero(hero: HeroFullInformation, turn: 'prev' | 'next'): void {
+  //   this.loading = true;
+  //   const heroesID = this.heroes!.map((hero: Hero) => hero.id).filter((id: number) => id !== hero.id);
+  //   const closestHeroId = turn === 'prev' ? Math.max(...heroesID.filter((num: number) => num <= hero.id)) : Math.min(...heroesID.filter((num: number) => num >= hero.id));
+  //   const closestHero = this.heroes![closestHeroId - 1];
+  //
+  //   this.router.navigate(['hero', closestHero.name_loc.toLowerCase()]).then(() => this.loading = false);
+  //   this.cdr.detectChanges();
+  // }
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();
