@@ -27,7 +27,7 @@
             </button>
           </div>
           <div class="hero-full-description" *ngIf="isFullHistory">
-            <div>{{ hero.bio_loc }}</div>
+            <div [innerHTML]="hero.bio_loc"></div>
             <button mat-stroked-button class="hero-history-toggle" (click)="closeFullHistory()">Close</button>
           </div>
         </div>

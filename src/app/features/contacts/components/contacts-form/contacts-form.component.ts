@@ -10,7 +10,7 @@ import { Contacts, ContactsForm } from '../../../core/interfaces/contacts-form';
   templateUrl: './contacts-form.component.html',
   styleUrls: ['./contacts-form.component.scss'],
   standalone: true,
-  imports: contactsFormImports,
+  imports: [...contactsFormImports],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactsFormComponent {

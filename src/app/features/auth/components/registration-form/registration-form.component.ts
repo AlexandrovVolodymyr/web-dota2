@@ -11,7 +11,7 @@ import { Registration, RegistrationForm } from '../../../core/interfaces/auth.in
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.scss'],
   standalone: true,
-  imports: registrationFormImports,
+  imports: [...registrationFormImports],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrationFormComponent {

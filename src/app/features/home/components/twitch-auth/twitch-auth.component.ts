@@ -10,7 +10,7 @@ import { environment } from '../../../../../environments/environment';
   templateUrl: './twitch-auth.component.html',
   styleUrls: ['./twitch-auth.component.scss'],
   standalone: true,
-  imports: twitchAuthImports,
+  imports: [...twitchAuthImports],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TwitchAuthComponent {

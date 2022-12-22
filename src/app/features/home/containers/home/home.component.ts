@@ -21,7 +21,7 @@ import { environment } from '../../../../../environments/environment';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: homeImports,
+  imports: [...homeImports],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit, OnDestroy {

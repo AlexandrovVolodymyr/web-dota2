@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
+import { dialogImports } from '../../features/profile/profile.imports';
 import { User } from '../../features/core/interfaces/user.interface';
 
 @Component({
@@ -8,6 +9,7 @@ import { User } from '../../features/core/interfaces/user.interface';
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
   standalone: true,
+  imports: [...dialogImports],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DialogComponent {
@@ -17,9 +19,5 @@ export class DialogComponent {
     private dialogRef: MatDialogRef<DialogComponent>,
     // @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
-  }
-
-  create() {
-    this.user.photo = 'https://picsum.photos/200';
   }
 }

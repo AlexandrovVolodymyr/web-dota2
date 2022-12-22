@@ -24,7 +24,7 @@ import { profileNameImports } from '../../profile.imports';
   templateUrl: './profile-name.component.html',
   styleUrls: ['./profile-name.component.scss'],
   standalone: true,
-  imports: profileNameImports,
+  imports: [...profileNameImports],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileNameComponent implements OnInit, AfterViewInit, OnDestroy {

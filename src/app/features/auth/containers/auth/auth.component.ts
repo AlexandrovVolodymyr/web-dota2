@@ -23,7 +23,7 @@ import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
   standalone: true,
-  imports: authImports,
+  imports: [...authImports],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('openClose', [

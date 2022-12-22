@@ -10,7 +10,7 @@ import { FormActions } from '../../../core/interfaces/form-actions.interface';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
   standalone: true,
-  imports: loginFormImports,
+  imports: [...loginFormImports],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginFormComponent {

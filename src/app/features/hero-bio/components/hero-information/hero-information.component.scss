@@ -1,6 +1,9 @@
 @import 'src/assets/styles/variables';
 
 .hero-information {
+  position: relative;
+  z-index: 1;
+
   .container {
     display: flex;
     flex-wrap: wrap;

@@ -12,7 +12,7 @@ import { environment } from '../../../../../environments/environment';
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.scss'],
   standalone: true,
-  imports: contacts,
+  imports: [...contacts],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactsComponent {

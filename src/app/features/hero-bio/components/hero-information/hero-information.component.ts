@@ -9,7 +9,7 @@ import { HeroFullInformation } from '../../../core/interfaces/hero-full-informat
   templateUrl: './hero-information.component.html',
   styleUrls: ['./hero-information.component.scss'],
   standalone: true,
-  imports: [heroImports],
+  imports: [...heroImports],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroInformationComponent {

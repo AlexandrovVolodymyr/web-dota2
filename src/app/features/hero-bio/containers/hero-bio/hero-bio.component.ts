@@ -16,7 +16,7 @@ import { Hero } from '../../../core/interfaces/hero.interface';
   templateUrl: './hero-bio.component.html',
   styleUrls: ['./hero-bio.component.scss'],
   standalone: true,
-  imports: heroBioImports,
+  imports: [...heroBioImports],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 

@@ -16,10 +16,6 @@ import { LayoutService } from '../../../../services/layout.service';
 import { DialogComponent } from '../../../../shared/dialog/dialog.component';
 import { User } from '../../../core/interfaces/user.interface';
 
-// void - not part of the dom: created -> DOM, DOM -> removed from the DOM
-// * (default) -
-// custom -
-
 export type ProfileMode = 'on' | 'off';
 
 @Component({
@@ -27,7 +23,7 @@ export type ProfileMode = 'on' | 'off';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
   standalone: true,
-  imports: profileImports,
+  imports: [...profileImports],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileComponent {
@@ -47,10 +43,12 @@ export class ProfileComponent {
   }
 
   openModal(): void {
-    this.modalRef.open(DialogComponent);
+    this.modalRef.open(DialogComponent, {
+      width: '650px'
+    });
   }
 
-  changeMode(mode: ProfileMode = 'off') {
+  changeMode(mode: ProfileMode = 'off'): void {
     this.mode = mode;
   }
 

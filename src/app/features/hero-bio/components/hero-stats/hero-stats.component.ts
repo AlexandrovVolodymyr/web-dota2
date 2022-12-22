@@ -11,7 +11,7 @@ import { HeroFullInformation } from '../../../core/interfaces/hero-full-informat
   templateUrl: './hero-stats.component.html',
   styleUrls: ['./hero-stats.component.scss'],
   standalone: true,
-  imports: heroStatsImports,
+  imports: [...heroStatsImports],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroStatsComponent {

@@ -9,7 +9,7 @@ import { TwitchUser } from '../../../core/interfaces/twitch.interface';
   templateUrl: './twitch-user.component.html',
   styleUrls: ['./twitch-user.component.scss'],
   standalone: true,
-  imports: twitchUserImports,
+  imports: [...twitchUserImports],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TwitchUserComponent implements OnInit {

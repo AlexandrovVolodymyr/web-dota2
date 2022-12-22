@@ -17,7 +17,7 @@ import { Hero, HeroAttributes } from '../../../core/interfaces/hero.interface';
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss'],
   standalone: true,
-  imports: heroes,
+  imports: [...heroes],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('heroesList', [
