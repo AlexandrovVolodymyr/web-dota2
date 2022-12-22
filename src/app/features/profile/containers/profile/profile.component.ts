@@ -1,11 +1,12 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   inject,
   ViewChild,
 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 import { Observable } from 'rxjs';
@@ -13,10 +14,10 @@ import { Observable } from 'rxjs';
 import { profileImports } from '../../profile.imports';
 import { UserService } from '../../../../services/user.service';
 import { LayoutService } from '../../../../services/layout.service';
-import { DialogComponent } from '../../../../shared/dialog/dialog.component';
+import { UtilsService } from '../../../../services/utils.service';
 import { User } from '../../../core/interfaces/user.interface';
 
-export type ProfileMode = 'on' | 'off';
+type ProfileMode = 'on' | 'off';
 
 @Component({
   selector: 'app-profile',
@@ -29,23 +30,19 @@ export type ProfileMode = 'on' | 'off';
 export class ProfileComponent {
   @ViewChild('displayNameRef', { read: ElementRef }) displayNameRef!: ElementRef;
 
+  private userService = inject(UserService);
   user$: Observable<User | null> = inject(UserService).user$;
   mode: ProfileMode = 'off';
   loading = false;
 
-  private modalRef = inject(MatDialog);
-  private userService = inject(UserService);
   private layoutService = inject(LayoutService);
   private afs = inject(AngularFirestore);
+  private cdr = inject(ChangeDetectorRef);
+  private matSnackBar = inject(MatSnackBar);
+  private utilsService = inject(UtilsService);
 
   closeProfile(): void {
     this.layoutService.setProfileMode('off');
-  }
-
-  openModal(): void {
-    this.modalRef.open(DialogComponent, {
-      width: '650px'
-    });
   }
 
   changeMode(mode: ProfileMode = 'off'): void {
@@ -63,9 +60,41 @@ export class ProfileComponent {
         localStorage.setItem('user', JSON.stringify(this.userService.getUser()!));
         this.changeMode('off');
         this.loading = false;
-      }).catch(er => alert(er));
+        this.matSnackBar.open('Your name has been updated', 'Close', this.utilsService.snackBarOptions());
+      }).catch(er => {
+        this.matSnackBar.open(er, 'Close', this.utilsService.snackBarOptions());
+        this.loading = false;
+      });
     } else {
       this.changeMode('off');
     }
+  }
+
+  updatePhoto({ target }: Event): void {
+    this.loading = true;
+    const reader = new FileReader();
+    reader.readAsBinaryString((target as HTMLInputElement).files![0]);
+    reader.onload = (event: ProgressEvent<FileReader>) => {
+      const photo = 'data:image/jpg;base64, ' + btoa(event!.target!.result!.toString());
+      this.afs.collection('users').doc(this.userService.getUser()?.uid).set({
+        ...this.userService.getUser(),
+        photo: photo
+      }).then(_ => {
+        this.userService.setUser({ ...this.userService.getUser()!, photo });
+        localStorage.setItem('user', JSON.stringify(this.userService.getUser()!));
+        this.loading = false;
+        this.matSnackBar.open('Your name has been updated', 'Close', this.utilsService.snackBarOptions());
+        this.cdr.detectChanges();
+      }).catch(er => {
+        this.loading = false;
+        this.matSnackBar.open(er, 'Close', this.utilsService.snackBarOptions());
+        this.cdr.detectChanges();
+      });
+    };
+    reader.onerror = (error: ProgressEvent<FileReader>) => {
+      this.matSnackBar.open(error.toString(), 'Close', this.utilsService.snackBarOptions());
+      this.loading = false;
+      this.cdr.detectChanges();
+    };
   }
 }

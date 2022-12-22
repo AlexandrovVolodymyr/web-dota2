@@ -4,16 +4,19 @@
   </div>
   <form class="profile-info">
     <div class="profile__avatar">
-      <div>
+      <div class="profile-row">
         <img [src]="user.photo" [alt]="user.displayName">
       </div>
-      <span class="profile-action" (click)="openModal()">Change avatar</span>
+      <div class="profile-row">
+        <input type="file" title="" (change)="updatePhoto($event)">
+        <span class="avatar-action">Change avatar</span>
+      </div>
     </div>
     <div class="profile__name">
       <ng-container *ngIf="mode === 'on'; else nameTpl">
         <app-profile-name [displayNameRef]="displayNameRef"
-                         [value]="user.displayName"
-                         (updateNameEvent)="updateName($event)">
+                          [value]="user.displayName"
+                          (updateNameEvent)="updateName($event)">
         </app-profile-name>
       </ng-container>
       <ng-template #nameTpl>

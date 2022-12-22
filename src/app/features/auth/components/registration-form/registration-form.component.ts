@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, inject, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -34,11 +34,8 @@ export class RegistrationFormComponent {
   };
   avatar: string | undefined;
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private matSnackBar: MatSnackBar
-  ) {
-  }
+  private cdr = inject(ChangeDetectorRef);
+  private matSnackBar = inject(MatSnackBar);
 
   get email(): AbstractControl<string> {
     return this.registrationForm.get('email')!;
