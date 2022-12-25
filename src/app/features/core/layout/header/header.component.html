@@ -1,10 +1,10 @@
-<header>
+<header #header>
   <app-navigation></app-navigation>
 
-  <app-user [user]="user"
-            (logoutEvent)="logout()"
-            (openProfileEvent)="openProfileBar()">
+  <app-user (logoutEvent)="logout()"
+            (openProfileEvent)="openProfileBar()"
+            [user]="user">
   </app-user>
 
-  <app-profile @toggleProfile *ngIf="(profile$ | async) === 'on'"></app-profile>
+  <app-profile *ngIf="(profile$ | async) === 'on'" @toggleProfile></app-profile>
 </header>

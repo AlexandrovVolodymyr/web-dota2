@@ -1,9 +1,6 @@
-:host {
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 1rem;
-
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
 }

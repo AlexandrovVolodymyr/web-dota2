@@ -1,9 +1,16 @@
-<nav>
-  <mat-icon class="logo" svgIcon="logo"></mat-icon>
+<nav *ngIf="layoutType | async as type">
+  <ng-container *ngIf="type === 'desktop'; else mobileNav">
+    <mat-icon class="logo" svgIcon="logo"></mat-icon>
 
-  <ul class="navigation">
-    <li routerLink="/home" routerLinkActive="active"><span>Home</span></li>
-    <li routerLink="/heroes" routerLinkActive="active"><span>Heroes</span></li>
-    <li routerLink="/contacts" routerLinkActive="active"><span>Contacts</span></li>
-  </ul>
+    <ul class="navigation">
+      <li routerLink="/home" routerLinkActive="active"><span>Home</span></li>
+      <li routerLink="/heroes" routerLinkActive="active"><span>Heroes</span></li>
+      <li routerLink="/contacts" routerLinkActive="active"><span>Contacts</span></li>
+    </ul>
+  </ng-container>
+  <ng-template #mobileNav>
+    <button mat-icon-button color="warn" aria-label="Mobile menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </ng-template>
 </nav>

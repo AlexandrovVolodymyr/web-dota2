@@ -39,4 +39,26 @@ nav {
       }
     }
   }
+
+  button[mat-icon-button] {
+    width: 54px;
+    height: 54px;
+
+    mat-icon {
+      height: 36px;
+      width: 36px;
+      font-size: 36px;
+      line-height: 36px;
+
+      &:hover {
+        color: $white;
+      }
+    }
+
+    &:hover {
+      mat-icon {
+        color: $logo-color;
+      }
+    }
+  }
 }

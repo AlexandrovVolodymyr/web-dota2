@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+
+import { Observable } from 'rxjs';
+
+import { LayoutService } from '../../../../services/layout.service';
+import { LayoutType } from '../../types/layout-type';
 
 @Component({
   selector: 'app-navigation',
@@ -7,4 +12,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationComponent {
+  private layoutService = inject(LayoutService);
+
+  get layoutType(): Observable<LayoutType> {
+    return this.layoutService.layoutType$;
+  }
 }

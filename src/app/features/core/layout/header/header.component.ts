@@ -1,8 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
+  inject,
   Input,
+  NgZone,
   OnDestroy,
+  OnInit,
+  ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -29,20 +34,30 @@ import { User } from '../../interfaces/user.interface';
     ]),
   ]
 })
-export class HeaderComponent implements OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
+  @ViewChild('header', { static: true }) header!: ElementRef;
   @Input() user: User | undefined;
-
+  
+  private layoutService = inject(LayoutService);
   profile$: Observable<'on' | 'off'> = this.layoutService.profile$;
 
+  private observer!: ResizeObserver;
+  private ngZone = inject(NgZone);
+  private authService = inject(AuthService);
+  private userService = inject(UserService);
+  private twitchService = inject(TwitchService);
+  private router = inject(Router);
   private unsubscribe$ = new Subject<void>();
 
-  constructor(
-    private authService: AuthService,
-    private userService: UserService,
-    private twitchService: TwitchService,
-    private router: Router,
-    private layoutService: LayoutService
-  ) {
+  ngOnInit(): void {
+    this.observer = new ResizeObserver((entries: ResizeObserverEntry[]) => {
+      this.ngZone.run(() => {
+        this.layoutService.setHeaderOptions({ width: entries[0].borderBoxSize[0].inlineSize });
+        this.layoutService.setLayoutType(this.layoutService.getHeaderOptions().width);
+      });
+    });
+
+    this.observer.observe(this.header.nativeElement);
   }
 
   openProfileBar(): void {
@@ -66,6 +81,7 @@ export class HeaderComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.observer.unobserve(this.header.nativeElement);
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
