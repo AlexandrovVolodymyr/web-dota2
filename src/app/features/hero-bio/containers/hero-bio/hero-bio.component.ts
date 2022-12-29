@@ -34,7 +34,7 @@ export class HeroBioComponent implements OnInit, OnDestroy {
             return { name, heroes: snapshot.docs.map(doc => <HeroFullInformation>doc.data()) };
           }));
       }),
-      map(({ name, heroes }) => heroes.find((item: HeroFullInformation) => item.name_loc.toLowerCase() === name)),
+      map(({ name, heroes }) => heroes.find((item: HeroFullInformation) => item.name_loc.toLowerCase() === name))
     );
   loading = false;
 

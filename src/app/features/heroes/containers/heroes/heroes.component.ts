@@ -8,7 +8,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, map, Observable, Subject, takeUntil } from 'rxjs';
 
 import { heroes } from '../../heroes.imports';
-import { HeroesService } from '../../services/heroes.service';
 import { UtilsService } from '../../../../services/utils.service';
 import { Hero, HeroAttributes } from '../../../core/interfaces/hero.interface';
 
@@ -35,18 +34,14 @@ export class HeroesComponent implements OnInit, OnDestroy {
 
   private matSnackBar = inject(MatSnackBar);
   private utilsService = inject(UtilsService);
+  private afs = inject(AngularFirestore);
+  private router = inject(Router);
   private unsubscribe$ = new Subject<void>();
-
-  constructor(
-    private heroesService: HeroesService,
-    private afs: AngularFirestore,
-    private router: Router
-  ) {
-  }
 
   get filteringHeroes$(): Observable<Hero[]> {
     return this.heroes$
       .pipe(
+        // filter((heroes: Hero[]) => !!heroes.length) // TODO: catchError if this.heroes$ = [] ???
         map((heroes: Hero[]) => heroes.filter(hero => hero.name_loc.toLowerCase().includes(this.searchValue$.getValue()))),
         map((heroes: Hero[]) => heroes.filter(hero => {
           const attributes = this.heroAttributes$.getValue().filter(attr => attr.status);

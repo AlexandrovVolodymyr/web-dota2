@@ -1,5 +1,16 @@
-<ul class="abilities">
-  <li *ngFor="let ability of abilities">
-    <app-hero-ability [ability]="ability"></app-hero-ability>
+<ul class="abilities" #abilitiesList>
+  <li *ngFor="let ability of abilities" #item>
+    <app-hero-ability #ability [ability]="ability"></app-hero-ability>
   </li>
+
+  <ng-container *ngIf="count > 6">
+    <button mat-mini-fab color="primary" class="arrow-left" aria-label="Scroll left"
+            (click)="moveLeft(abilitiesList)">
+      <mat-icon>west</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" class="arrow-right" aria-label="Scroll right"
+            (click)="moveRight(abilitiesList)">
+      <mat-icon>east</mat-icon>
+    </button>
+  </ng-container>
 </ul>

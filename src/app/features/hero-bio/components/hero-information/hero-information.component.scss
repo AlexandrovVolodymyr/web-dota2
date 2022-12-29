@@ -90,6 +90,11 @@
     max-width: 550px;
   }
 
+  .hero-description {
+    overflow: auto;
+    max-height: 96px;
+  }
+
   .hero-full-description {
     position: absolute;
     top: 40px;

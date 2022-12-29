@@ -1,13 +1,37 @@
 @import 'src/assets/styles/variables';
 
-.abilities {
-  margin-left: -10px;
-  display: flex;
-  flex-wrap: wrap;
+:host {
   position: relative;
 
-  li {
-    cursor: pointer;
-    padding: 10px;
+  .abilities {
+    margin-left: -10px;
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 600px;
+    overflow: auto;
+
+    li {
+      cursor: pointer;
+      padding: 10px;
+    }
+  }
+
+  button {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &.arrow-left {
+      left: -25px;
+    }
+
+    &.arrow-right {
+      right: -15px;
+    }
   }
 }
+
