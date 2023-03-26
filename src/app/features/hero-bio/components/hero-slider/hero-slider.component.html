@@ -1,11 +1,13 @@
 <div class="hero-slider">
   <div class="hero-slider__left">
-    <button mat-mini-fab color="primary" aria-label="Previous hero" (click)="prev()" [class.disabled]="prevDisabled" [disabled]="prevDisabled">
+    <button mat-mini-fab color="primary" aria-label="Previous hero" (click)="prev()" [class.disabled]="prevDisabled"
+            [disabled]="prevDisabled">
       <mat-icon>chevron_left</mat-icon>
     </button>
   </div>
   <div class="hero-slider__right">
-    <button mat-mini-fab color="primary" aria-label="Next hero" (click)="next()">
+    <button mat-mini-fab color="primary" aria-label="Next hero" (click)="next()" [class.disabled]="nextDisabled"
+            [disabled]="nextDisabled">
       <mat-icon>chevron_right</mat-icon>
     </button>
   </div>

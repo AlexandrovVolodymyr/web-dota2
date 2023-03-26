@@ -1,16 +1,24 @@
 <nav *ngIf="layoutType | async as type">
   <ng-container *ngIf="type === 'desktop'; else mobileNav">
-    <mat-icon class="logo" svgIcon="logo"></mat-icon>
-
-    <ul class="navigation">
-      <li routerLink="/home" routerLinkActive="active"><span>Home</span></li>
-      <li routerLink="/heroes" routerLinkActive="active"><span>Heroes</span></li>
-      <li routerLink="/contacts" routerLinkActive="active"><span>Contacts</span></li>
-    </ul>
+    <app-menu [type]=type></app-menu>
   </ng-container>
+
   <ng-template #mobileNav>
-    <button mat-icon-button color="warn" aria-label="Mobile menu">
+    <button mat-icon-button color="warn" aria-label="Mobile menu"
+            cdkOverlayOrigin
+            #trigger="cdkOverlayOrigin"
+            (click)="setSidebarMode(true)">
       <mat-icon>menu</mat-icon>
     </button>
+    <!--    [cdkConnectedOverlayOffsetX]="-28"-->
+    <!--    [cdkConnectedOverlayOffsetY]="-95"-->
+    <ng-template cdkConnectedOverlay
+                 [cdkConnectedOverlayHasBackdrop]="true"
+                 [cdkConnectedOverlayOrigin]="trigger"
+                 [cdkConnectedOverlayOpen]="(sidebar$ | async)!"
+                 (detach)="setSidebarMode(false)"
+                 (backdropClick)="setSidebarMode(false)">
+      <app-menu @toggleProfile [type]="type"></app-menu>
+    </ng-template>
   </ng-template>
 </nav>

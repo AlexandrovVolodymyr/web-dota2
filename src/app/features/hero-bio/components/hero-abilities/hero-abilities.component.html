@@ -1,9 +1,8 @@
 <ul class="abilities" #abilitiesList>
-  <li *ngFor="let ability of abilities" #item>
+  <li class="abilities__item" *ngFor="let ability of abilities" #item>
     <app-hero-ability #ability [ability]="ability"></app-hero-ability>
   </li>
-
-  <ng-container *ngIf="count > 6">
+  <ng-container *ngIf="count > 5">
     <button mat-mini-fab color="primary" class="arrow-left" aria-label="Scroll left"
             (click)="moveLeft(abilitiesList)">
       <mat-icon>west</mat-icon>

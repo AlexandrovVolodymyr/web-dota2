@@ -3,4 +3,8 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
+  @media screen and (max-width: 425px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

@@ -3,6 +3,9 @@
 .user {
   color: $white;
   padding: 1rem;
+  @media screen and (max-width: 767px) {
+    padding: 0;
+  }
 
   .user-data {
     display: flex;
@@ -12,9 +15,14 @@
       background-color: $text-color-light;
       border-radius: 50%;
       border: 2px solid $text-color-light;
+      flex-shrink: 0;
       width: 80px;
       height: 80px;
       overflow: hidden;
+      @media screen and (max-width: 425px) {
+        width: 40px;
+        height: 40px;
+      }
 
       img {
         width: 100%;
@@ -32,6 +40,16 @@
       font-weight: 700;
       font-size: 20px;
       line-height: 26px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      @media screen and (max-width: 767px) {
+        max-width: 100px;
+      }
+      @media screen and (max-width: 425px) {
+        font-size: 14px;
+        line-height: 18px;
+      }
     }
 
     &__status {
@@ -57,9 +75,21 @@
       cursor: pointer;
       display: flex;
       margin-left: 30px;
+      @media screen and (max-width: 767px) {
+        margin-left: 5px;
+      }
 
       button {
         background-color: transparent;
+
+        mat-icon {
+          @media screen and (max-width: 767px) {
+            width: 18px;
+            height: 18px;
+            font-size: 18px;
+            line-height: 18px;
+          }
+        }
       }
     }
   }

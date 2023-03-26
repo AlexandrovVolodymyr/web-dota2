@@ -29,6 +29,10 @@ export class HeroSliderComponent {
     return (this.hero.id === 1);
   }
 
+  get nextDisabled(): boolean {
+    return this.hero.id >= this.heroes!.length;
+  }
+
   prev(): void {
     this.prevEvent.emit();
   }

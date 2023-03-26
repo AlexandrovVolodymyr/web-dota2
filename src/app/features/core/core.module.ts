@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 import { HeaderComponent } from './layout/header/header.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 import { UserComponent } from '../../shared/user/user.component';
 import { ProfileComponent } from '../profile/containers/profile/profile.component';
+import { MenuComponent } from '../../shared/menu/menu.component';
 
 import { NumberRoundPipe } from './pipes/number-round.pipe';
 import { ImgSplitPipe } from './pipes/img-split.pipe';
@@ -28,7 +30,9 @@ import { TwitchViewersPipe } from './pipes/twitch-viewers.pipe';
     RouterLinkActive,
     UserComponent,
     ProfileComponent,
-    MatButtonModule
+    MatButtonModule,
+    OverlayModule,
+    MenuComponent
   ],
   exports: [
     HeaderComponent,

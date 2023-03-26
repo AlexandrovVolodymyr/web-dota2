@@ -1,0 +1,14 @@
+<div class="menu-header">
+  <mat-icon class="menu-header__logo" svgIcon="logo"></mat-icon>
+  <mat-icon class="menu-header__close" *ngIf="isMobile" (click)="setSidebarMode(false)">close</mat-icon>
+</div>
+
+<ul>
+  <li routerLink="/home" routerLinkActive="active"><span>Home</span></li>
+  <li routerLink="/heroes" routerLinkActive="active"><span>Heroes</span></li>
+  <li routerLink="/contacts" routerLinkActive="active"><span>Contacts</span></li>
+</ul>
+
+<div *ngIf="isMobile" class="menu-footer">
+  <img class="animate__animated animate__fadeIn animate__faster" src="assets/img/sidebar-bane.png" alt="bane">
+</div>

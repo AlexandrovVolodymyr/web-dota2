@@ -12,6 +12,8 @@ export class LayoutService {
 
   headerOptions$ = new BehaviorSubject({ width: NaN });
   layoutType$ = new BehaviorSubject<LayoutType>('desktop');
+  private sidebarMode$ = new BehaviorSubject<boolean>(false);
+  sidebar$ = this.sidebarMode$.asObservable();
 
   setProfileMode(mode: 'on' | 'off'): void {
     this.profileMode$.next(mode);
@@ -39,5 +41,13 @@ export class LayoutService {
 
   getLayoutType(): LayoutType {
     return this.layoutType$.getValue();
+  }
+
+  setSidebarMode$(mode: boolean): void {
+    this.sidebarMode$.next(mode);
+  }
+
+  getSidebarMode$(): boolean {
+    return this.sidebarMode$.getValue();
   }
 }
